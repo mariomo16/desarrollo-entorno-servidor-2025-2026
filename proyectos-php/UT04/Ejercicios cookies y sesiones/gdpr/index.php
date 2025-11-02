@@ -5,7 +5,7 @@
  *
  * @description Ejercicio de Consentimiento GDPR y contador de visitas
  * @author Mario Morales Ortega (1745008)
- * @version 1.0.1
+ * @version 1.0.2
  * @created 2025-11-02
  * @modified 2025-11-02
  * @see https://github.com/mariomo16/desarrollo-entorno-servidor-2025-2026/tree/main/proyectos-php/UT04/Ejercicios%20cookies%20y%20sesiones/gdpr
@@ -19,11 +19,11 @@ switch ($_GET["consent"]) {
     case 'accept':
         // Primera visita con consentimiento: crear la cookie con valor inicial
         if (empty($_COOKIE["tracker_actividad"])) {
-            setcookie("tracker_actividad", 1, time() + 86400, "/");
+            setcookie("tracker_actividad", 1, -0, "/");
         } else {
             // Visitas posteriores: incrementar el contador de la cookie existente
             // Referencia: https://stackoverflow.com/questions/6487564/how-do-you-update-a-cookie-in-php
-            setcookie("tracker_actividad", $_COOKIE["tracker_actividad"] += 1, time() + 86400, "/");
+            setcookie("tracker_actividad", $_COOKIE["tracker_actividad"] += 1, -0, "/");
         }
         
         // Obtener el valor actual del contador (usar 1 si la cookie aún no está disponible en esta petición)
