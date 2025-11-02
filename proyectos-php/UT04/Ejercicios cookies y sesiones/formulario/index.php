@@ -1,10 +1,24 @@
 <?php
-    $nombre = '';
-    $email = '';
+session_start();
+
+$nombre = $_SESSION['nombre'] ?: '';
+$email = $_SESSION['email'] ?: '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $_SESSION['nombre'] = $_POST['nombre'];
+    $_SESSION['email'] = $_POST['email'];
+
+    header("Location: paso2.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head><title>Registro - Paso 1</title></head>
+
+<head>
+    <title>Registro - Paso 1</title>
+</head>
+
 <body>
     <h1>Paso 1: Datos Personales</h1>
     <form method="POST">
@@ -17,4 +31,5 @@
         <button type="submit">Siguiente</button>
     </form>
 </body>
+
 </html>

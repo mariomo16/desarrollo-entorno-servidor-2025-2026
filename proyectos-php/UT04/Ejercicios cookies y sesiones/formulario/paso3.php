@@ -1,15 +1,25 @@
 <?php
-    $nombre = '';
-    $email = '';
-    $direccion = '';
-    $ciudad = '';
+session_start();
+
+$nombre = $_SESSION["nombre"];
+$email = $_SESSION["email"];
+$direccion = $_SESSION["direccion"];
+$ciudad = $_SESSION["ciudad"];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header("Location: finalizar.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head><title>Registro - Paso 3</title></head>
+
+<head>
+    <title>Registro - Paso 3</title>
+</head>
+
 <body>
     <h1>Paso 3: Revisar Datos</h1>
-    
+
     <h3>Datos Personales (de paso 1)</h3>
     <p>Nombre: <?= htmlspecialchars($nombre); ?></p>
     <p>Email: <?= htmlspecialchars($email); ?></p>
@@ -25,4 +35,5 @@
         <button type="submit">¡Confirmar y Finalizar Registro!</button>
     </form>
 </body>
+
 </html>

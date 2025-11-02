@@ -1,10 +1,24 @@
 <?php
-    $direccion = '';
-    $ciudad = '';
+session_start();
+
+$direccion = $_SESSION['direccion'] ?: '';
+$ciudad = $_SESSION['ciudad'] ?: '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $_SESSION['direccion'] = $_POST['direccion'];
+    $_SESSION['ciudad'] = $_POST['ciudad'];
+
+    header("Location: paso3.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head><title>Registro - Paso 2</title></head>
+
+<head>
+    <title>Registro - Paso 2</title>
+</head>
+
 <body>
     <h1>Paso 2: Dirección</h1>
     <form method="POST">
@@ -18,4 +32,5 @@
         <button type="submit">Siguiente</button>
     </form>
 </body>
+
 </html>
