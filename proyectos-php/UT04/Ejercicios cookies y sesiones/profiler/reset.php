@@ -1,3 +1,2 @@
 <?php
-    // Borrar cookies y redirigir a index
-?>
+// Borrar cookies y redirigir a index
