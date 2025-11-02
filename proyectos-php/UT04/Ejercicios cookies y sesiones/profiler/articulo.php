@@ -1,4 +1,10 @@
 <?php
+if (!isset($_COOKIE['categorias'])) {
+    $categorias = ['deportes' => 0, 'tecnologia' => 0, 'cocina' => 0];
+    setcookie('categorias', json_encode($categorias), time() + 86400, '/');
+    $intereses_guardados = (array) json_decode($_COOKIE['categorias']);
+}
+
 $articulos = [
     'deportes' => 'Janja Garnet gana (otra vez) el campeonato mundial en boulder y lead',
     'tecnologia' => '1X Technologies presenta su robot de limpieza doméstica',
@@ -6,8 +12,16 @@ $articulos = [
 ];
 
 $categoria_actual = $_GET['categoria'] ?? 'general';
-?>
 
+if (isset($_COOKIE['categorias'])) {
+    $categorias = (array) json_decode($_COOKIE['categorias']);
+
+    if ($categoria_actual === 'deportes' || $categoria_actual === 'tecnologia' || $categoria_actual === 'cocina') {
+        $categorias[(string) $categoria_actual] += 1;
+        setcookie('categorias', json_encode($categorias), time() + 86400, '/');
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 

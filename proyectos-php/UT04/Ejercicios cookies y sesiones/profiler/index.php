@@ -1,15 +1,24 @@
 <?php
-$intereses_guardados = '';
-$categoria_favorita = null;
-$recomendacion = "Navega por la web para ver recomendaciones";
+/**
+ * index.php - 
+ *
+ * @description 
+ * @author Mario Morales Ortega (1745008)
+ * @version 0.1.0
+ * @created 2025-11-02
+ * @modified 2025-11-02
+ * @see https://github.com/mariomo16/desarrollo-entorno-servidor-2025-2026/tree/main/proyectos-php/UT04/Ejercicios%20cookies%20y%20sesiones/profiler
+ */
+
+$intereses_guardados = isset($_COOKIE['categorias']) ? (array) json_decode($_COOKIE['categorias']) : null;
 
 if (!empty($intereses_guardados)) {
-    if (true) {
-        $recomendacion = "Vemos que te interesa mucho la categoría de <strong>?????</strong>. ¡Aquí tienes más!";
-    }
+    $categoria_favorita = array_keys($intereses_guardados, max($intereses_guardados))[0];
+    $recomendacion = "Vemos que te interesa mucho la categoría de <strong>$categoria_favorita</strong>. ¡Aquí tienes más!";
+} else {
+    $recomendacion = "Aún no sabemos nada de ti";
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 
