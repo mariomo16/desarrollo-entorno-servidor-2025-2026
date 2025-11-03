@@ -1,13 +1,12 @@
 <?php
-
 /**
  * index.php - GDPR Cookie Consent
  *
  * @description Ejercicio de Consentimiento GDPR y contador de visitas
  * @author Mario Morales Ortega (1745008)
- * @version 1.0.2
+ * @version 1.0.3
  * @created 2025-11-02
- * @modified 2025-11-02
+ * @modified 2025-11-03
  * @see https://github.com/mariomo16/desarrollo-entorno-servidor-2025-2026/tree/main/proyectos-php/UT04/Ejercicios%20cookies%20y%20sesiones/gdpr
  */
 
@@ -17,30 +16,30 @@
 // Procesar el consentimiento del usuario según el parámetro GET
 switch ($_GET["consent"]) {
     case 'accept':
+        setcookie('consent', '1', -0, '/');
         // Primera visita con consentimiento: crear la cookie con valor inicial
-        if (empty($_COOKIE["tracker_actividad"])) {
-            setcookie("tracker_actividad", 1, -0, "/");
-        } else {
-            // Visitas posteriores: incrementar el contador de la cookie existente
-            // Referencia: https://stackoverflow.com/questions/6487564/how-do-you-update-a-cookie-in-php
-            setcookie("tracker_actividad", $_COOKIE["tracker_actividad"] += 1, -0, "/");
+        if (!isset($_COOKIE["tracker_actividad"])) {
+            setcookie("tracker_actividad", 0, -0, "/");
         }
-        
-        // Obtener el valor actual del contador (usar 1 si la cookie aún no está disponible en esta petición)
-        // Esto lo hago porque si muestro directamente $_COOKIE["tracker_actividad"] las visitas se guardan pero la primera no se muestra
-        $contador = $_COOKIE["tracker_actividad"] ?: 1;
-        // Mostrar mensaje de confirmación con el número de visitas
-        $mensaje_cookies = "<p style=\"color: green;\"><strong>Consentimiento: OTORGADO.</strong><br>Te estamos \"rastreando\". Has visitado esta página " . $contador . " veces desde que aceptaste.</p>";
+        header('Location: index.php');
         break;
-
     default:
         // Usuario no ha dado consentimiento: mostrar mensaje informativo
         $mensaje_cookies = "<p style=\"color: red;\"><strong>Consentimiento: PENDIENTE.</strong><br>NO te estamos \"rastreando\" (la cookie 'tracker_actividad' no se creará ni actualizará).</p>";
         break;
 }
 
-?>
+if (isset($_COOKIE['consent'])) {
+    // Visitas posteriores: incrementar el contador de la cookie existente
+    // Referencia: https://stackoverflow.com/questions/6487564/how-do-you-update-a-cookie-in-php
+    setcookie("tracker_actividad", $_COOKIE["tracker_actividad"] += 1, -0, "/");
 
+    // Obtengo el número de veces que se ha visitado la página
+    $contador = $_COOKIE["tracker_actividad"];
+    // Mostrar mensaje de consentimiento con el número de visitas
+    $mensaje_cookies = "<p style=\"color: green;\"><strong>Consentimiento: OTORGADO.</strong><br>Te estamos \"rastreando\". Has visitado esta página $contador veces desde que aceptaste.</p>";
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -89,7 +88,7 @@ switch ($_GET["consent"]) {
 
     <h2>Estado de Rastreo</h2>
     <?= $mensaje_cookies; // Mostrar el estado actual del rastreo ?>
-    <?php if ($_GET["consent"] !== "accept"): // Si no hay consentimiento, mostrar el banner de cookies ?>
+    <?php if (!isset($_COOKIE['consent'])): // Si no hay consentimiento, mostrar el banner de cookies ?>
         <div class="cookie-banner">
             <p>Usamos cookies para rastrear tu actividad y mejorar tu experiencia. ¿Aceptas?</p>
             <a href="index.php?consent=accept" class="boton-aceptar">Aceptar Cookies</a>
