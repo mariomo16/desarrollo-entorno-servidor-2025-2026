@@ -7,6 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Quacks', function () {
-  return Quack::get(); // esto devolverá un JSON con todos los quacks
+Route::get('/quacks', function () {
+    return Quack::get(); // Esto devolverá un JSON con todos los quacks
 });

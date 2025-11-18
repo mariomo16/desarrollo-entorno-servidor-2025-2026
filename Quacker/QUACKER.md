@@ -1,1 +1,0 @@
-php artisan make:model Quack -mf
