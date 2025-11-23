@@ -6,23 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quacks</title>
     <style>
+        body {
+            font-family: sans-serif;
+            background-color: #F7F9F9;
+        }
+
         main {
             width: 80%;
             margin: 0 auto;
         }
 
         article {
-            background-color: lightcyan;
+            background-color: #FFFFFF;
+            border: 1px solid #CFD9DE;
+            color: #0F1419;
             padding: 10px;
             margin: 20px 0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
+            border-radius: 8px;
         }
 
-        article:hover {
-            transform: scale(1.05);
-            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.5);
+        .date {
+            font-size: 0.9em;
+            color: #536471;
+        }
+
+        article p a {
+            color: #1D9BF0;
+            text-decoration: none;
+        }
+
+        article p a:hover {
+            color: #1A8CD8;
         }
     </style>
 </head>
@@ -30,7 +44,8 @@
 <body>
     <main>
         <article>
-            <h3>{{ $quack->nickname }} ({{ $quack->created_at }})</h3>
+            <h3>{{ $quack->nickname }}<span class="date"> ·
+                    {{ $quack->created_at->diffForHumans(['locale' => 'es', 'short' => true]) }}</span></h3>
             <p>{{ $quack->contenido }}</p>
             <p><a href="/quacks">Volver</a></p>
         </article>
