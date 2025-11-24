@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/controller/EntradaController.php';
-$controller = new EntradaController::getInstance();
+$controller = EntradaController::getInstance();
 
 $action = $_GET['action'] ?? 'mostrarEntradas';
 
