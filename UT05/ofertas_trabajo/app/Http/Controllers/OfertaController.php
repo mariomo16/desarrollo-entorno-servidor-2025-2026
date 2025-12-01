@@ -15,6 +15,9 @@ class OfertaController extends Controller
      */
     public function index()
     {
+        if (Auth::guest()) { // Comprobar si no ha iniciado sesión
+            return redirect('/login');
+        }
         return view('ofertas.index', [
             'ofertas' => Oferta::all()
         ]);
