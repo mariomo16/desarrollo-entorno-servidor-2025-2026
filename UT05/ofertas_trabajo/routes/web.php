@@ -8,8 +8,8 @@ Route::get('/', function () {
     return redirect('/ofertas');
 });
 
-Route::resource('ofertas', OfertaController::class);
+Route::resource('ofertas', OfertaController::class)->middleware('auth');
 
-Route::get('/login', [SessionController::class, 'create']);
+Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 Route::get('/logout', [SessionController::class, 'destroy']);

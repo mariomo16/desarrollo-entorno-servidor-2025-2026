@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -27,19 +28,9 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SessionRequest $request)
     {
-        $validado = $request->validate(
-            [
-                'email' => ['required', 'email'],
-                'password' => ['required'],
-            ],
-            [
-                'email.required' => 'El campo email es obligatorio',
-                'email.email' => 'El campo email debe ser un correo electrónico válido',
-                'password.required' => 'La contraseña es obligatoria',
-            ]
-        );
+        $validado = $request->validated();
 
         if (!Auth::attempt($validado)) {
             throw validationException::withMessages([
