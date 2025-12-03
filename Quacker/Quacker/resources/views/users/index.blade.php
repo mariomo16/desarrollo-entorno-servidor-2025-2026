@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quacks / Quacker</title>
+    <title>Usuarios / Quacker</title>
     <style>
         :root {
-            background-color: #000000;
             font-family: sans-serif;
+            background-color: #000000;
             --text-color: #E7E9EA;
             --twitter-color: #1A8BD7;
             --subtext-color: #71767B;
@@ -25,7 +25,7 @@
 
         main {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0px auto;
             padding: 0 16px;
         }
 
@@ -77,50 +77,44 @@
             background-color: var(--delete-hover);
         }
 
-        div.quackea {
+        div.createUser {
             position: fixed;
             top: 20px;
             left: 20px;
             transition: all 0.2s ease;
         }
 
-        div.quackea:hover {
+        div.createUser:hover {
             transform: scale(1.1);
         }
 
-        div.quackea p {
-            font-size: 2rem;
+        div.createUser p {
             background-color: var(--twitter-color);
             padding: 10px;
             border-radius: 50%;
             cursor: pointer;
         }
-
-        div.quackea a {
-            text-decoration: none;
-        }
-
-        .content {
-            font-family: 'Segoe UI';
-        }
     </style>
 </head>
 
 <body>
-    <div class="quackea">
-        <p><a href="/quacks/create">🦆</a></p>
-    </div>
     <main>
-        @foreach ($quacks as $quack)
+        <div class="createUser">
+            <p><a href="/users/create"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                        <path fill-rule="evenodd"
+                            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                    </svg></a></p>
+        </div>
+        @foreach ($users as $user)
             <article>
-                <h3>{{ $quack->user->displayname }}
-                    <span>{{ '@' }}{{ $quack->user->username }} · {{ $quack->created_at->diffForHumans() }}
+                <h3>{{ $user->displayname }}
+                    <span>{{ '@' }}{{ $user->username }}
                 </h3>
-                </span>
-                <p class="content">{{ $quack->content }}</p>
-                <p class="quackOptions"><a href="/quacks/{{ $quack->id }}">Mostrar más</a></p>
-                <p class="quackOptions"><a href="/quacks/{{ $quack->id }}/edit">Editar</a></p>
-                <form action="/quacks/{{ $quack->id }}" method="POST">
+                <p class="quackOptions"><a href="/users/{{ $user->id }}">Mostrar más</a></p>
+                <p class="quackOptions"><a href="/users/{{ $user->id }}/edit">Editar</a></p>
+                <form action="/users/{{ $user->id }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button>Eliminar</button>

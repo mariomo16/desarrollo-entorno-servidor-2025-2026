@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Quack;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class QuackController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('quacks.index', [
-            'quacks' => Quack::with('user')->latest()->get()
+        return view('users.index', [
+            'users' => User::latest()->get()
         ]);
     }
 
@@ -22,7 +22,7 @@ class QuackController extends Controller
      */
     public function create()
     {
-        return view('quacks.create');
+        return view('users.create');
     }
 
     /**
@@ -30,37 +30,37 @@ class QuackController extends Controller
      */
     public function store(Request $request)
     {
-        Quack::create($request->all());
-        return redirect('/quacks');
+        User::create($request->all());
+        return redirect('/users');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Quack $quack)
+    public function show(User $user)
     {
-        return view('quacks.show', [
-            'quack' => $quack
+        return view('users.show', [
+            'user' => $user
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Quack $quack)
+    public function edit(User $user)
     {
-        return view('quacks.edit', [
-            'quack' => $quack
+        return view('users.edit', [
+            'user' => $user
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Quack $quack)
+    public function update(Request $request, User $user)
     {
-        $quack->update($request->all());
-        return redirect('/quacks');
+        $user->update($request->all());
+        return redirect('/users');
     }
 
     /**
@@ -68,7 +68,7 @@ class QuackController extends Controller
      */
     public function destroy(string $id)
     {
-        Quack::destroy($id);
-        return redirect('/quacks');
+        User::destroy($id);
+        return redirect('/users');
     }
 }
