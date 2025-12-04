@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('manage-oferta', function (User $user, Oferta $oferta) {
-            return $oferta->empresa->user->id == $user->id;
-        });
+        //
     }
 }
