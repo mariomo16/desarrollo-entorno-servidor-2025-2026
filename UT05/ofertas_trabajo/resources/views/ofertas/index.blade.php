@@ -46,13 +46,13 @@
                 <td><a href="/ofertas/{{ $oferta->id }}">Ver detalles</a></td>
                 <td><a href="/ofertas/{{ $oferta->id }}/edit">Editar</a></td>
                 <td>
-                    @if ($oferta->empresa->user->id == Auth::user()->id)
+                    @can('manage-oferta', $oferta)
                         <form method="POST" action="/ofertas/{{ $oferta->id }}">
                             @method('DELETE')
                             @csrf
                             <button>Eliminar</button>
                         </form>
-                    @endif
+                    @endcan
                 </td>
             </tr>
         @endforeach

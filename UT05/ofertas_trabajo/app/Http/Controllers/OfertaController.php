@@ -51,11 +51,10 @@ class OfertaController extends Controller
      */
     public function edit(Oferta $oferta)
     {
-        Gate::authorize('edit-oferta', $oferta);
-
         return view('ofertas.edit', [
             'oferta' => $oferta
         ]);
+
     }
 
     /**
@@ -74,5 +73,6 @@ class OfertaController extends Controller
     {
         $oferta->delete();
         return redirect('/ofertas');
+
     }
 }
