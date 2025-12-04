@@ -26,13 +26,8 @@
 </head>
 
 <body>
-    @guest
-        <a href="/login">Click aqui para iniciar sesión</a>
-    @endguest
-    @auth
-        <h1>Bienvenido, {{ Auth::user()->name }}</h1>
-        <a href="/logout">Click aqui para cerrar sesión</a>
-    @endauth
+    <h1>Bienvenido, {{ Auth::user()->name }}</h1>
+    <a href="/logout">Click aqui para cerrar sesión</a>
 
     <table>
         <tr>
