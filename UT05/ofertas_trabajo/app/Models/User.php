@@ -46,11 +46,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function ofertas() {
+    public function ofertas()
+    {
         return $this->belongsToMany(Oferta::class, 'candidaturas')->withTimestamps();
     }
 
-    public function empresas() {
+    public function empresas()
+    {
         return $this->hasMany(Empresa::class);
     }
 }

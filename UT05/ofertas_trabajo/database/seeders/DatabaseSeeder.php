@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $users = User::factory(10)->create();
         InformacionFiscal::factory(10)->create();
         $ofertas = Oferta::factory(100)->create();
-        $users = User::factory(10)->create();
 
-        foreach($ofertas as $oferta) {
+        foreach ($ofertas as $oferta) {
             $candidatos = $users->random(5);
             $oferta->candidatos()->attach($candidatos);
         }

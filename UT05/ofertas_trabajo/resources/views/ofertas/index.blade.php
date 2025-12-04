@@ -33,7 +33,7 @@
         <h1>Bienvenido, {{ Auth::user()->name }}</h1>
         <a href="/logout">Click aqui para cerrar sesión</a>
     @endauth
-    
+
     <table>
         <tr>
             <th>Título</th>
@@ -51,11 +51,13 @@
                 <td><a href="/ofertas/{{ $oferta->id }}">Ver detalles</a></td>
                 <td><a href="/ofertas/{{ $oferta->id }}/edit">Editar</a></td>
                 <td>
-                    <form method="POST" action="/ofertas/{{ $oferta->id }}">
-                        @method('DELETE')
-                        @csrf
-                        <button>Eliminar</button>
-                    </form>
+                    @if ($oferta->empresa->user->id == Auth::user()->id)
+                        <form method="POST" action="/ofertas/{{ $oferta->id }}">
+                            @method('DELETE')
+                            @csrf
+                            <button>Eliminar</button>
+                        </form>
+                    @endif
                 </td>
             </tr>
         @endforeach
