@@ -1,0 +1,1 @@
+[Implementing Infinite Scroll with Laravel and jQuery](https://dev.to/rafaelogic/implementing-infinite-scroll-with-laravel-and-jquery-2i44)
