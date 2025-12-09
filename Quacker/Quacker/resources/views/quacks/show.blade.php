@@ -4,25 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quacks</title>
+    <title>Quack {{ $quack->id }} / {{ config('app.name') }}</title>
+    @vite(['resources/css/app.css'])
     <style>
-        main {
-            width: 80%;
-            margin: 0 auto;
+        article p.quack-content {
+            font-size: 17px;
+            line-height: 24px;
+            margin: 5px 0;
         }
 
-        article {
-            background-color: lightcyan;
-            padding: 10px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
-        }
-
-        article:hover {
-            transform: scale(1.05);
-            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.5);
+        form {
+            display: inline;
         }
     </style>
 </head>
@@ -30,9 +22,19 @@
 <body>
     <main>
         <article>
-            <h3>{{ $quack->display_name }} ({{ $quack->created_at }})</h3>
-            <p>{{ $quack->content }}</p>
-            <p><a href="/quacks">Volver</a></p>
+            <p>{{ $quack->display_name }}</p>
+            <p><span class="subtext">{{ '@' }}{{ $quack->display_name }}</span></p>
+            <p class="quack-content">{{ $quack->content }}</p>
+            <p><span class="subtext">{{ $quack->created_at->isoFormat('h:mm a · D MMM YYYY') }}</span></p>
+            <div class="manage-btns">
+                <a href="/quacks">Volver</a>
+                <a href="/quacks/{{ $quack->id }}/edit">Editar</a>
+                <form method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button>Eliminar</button>
+                </form>
+            </div>
         </article>
     </main>
 </body>

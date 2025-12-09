@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +6,135 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+	--font-sans:
+		"Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+:root {
+	--color-twitter: #1da1f2;
+	--color-background: #15202b;
+	--color-background-hover: #1c2731;
+	--color-text-white: #f7f9f9;
+	--color-text-black: #0f1419;
+	--color-subtext: #8b98a5;
+	--color-link: #1d9bf0;
+	--color-border: #38444d;
+	--color-btn: #eff3f4;
+}
+
+body {
+	background-color: var(--color-background);
+	color: var(--color-text-white);
+	font-family: "Segoe UI", sans-serif;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+}
+
+div.menu-btn {
+	position: fixed;
+	left: 20px;
+}
+
+div.menu-btn a {
+	padding: 10px;
+	font-size: 2rem;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+div.menu-btn a:hover {
+	background-color: var(--color-background-hover);
+}
+
+div.active {
+	top: 20px;
+}
+
+div.second {
+	top: 100px;
+}
+
+div.third {
+	top: 180px;
+}
+
+main {
+	width: 600px;
+	margin: 0 auto;
+	padding: 0;
+	border-left: 1px solid var(--color-border);
+	border-right: 1px solid var(--color-border);
+}
+
+article {
+	margin: 0;
+	padding: 12px 16px;
+	line-height: 20px;
+	border-bottom: 1px solid var(--color-border);
+	transition: all 0.2s ease;
+}
+
+span.subtext {
+	color: var(--color-subtext);
+}
+
+div.manage-btns {
+	margin-top: 20px;
+}
+
+div.manage-btns a {
+	margin-right: 10px;
+}
+
+div.manage-btns a,
+div.manage-btns button {
+	border: 1px solid var(--color-border);
+	border-radius: 50px;
+	padding: 6px 16px;
+	font-weight: bold;
+	transition: all 0.2s ease;
+	cursor: pointer; /* Para el </button> */
+}
+
+div.manage-btns a:hover,
+div.manage-btns button:hover {
+	background-color: var(--color-twitter);
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+label,
+input {
+	font-size: 20px;
+}
+
+input {
+	outline: none;
+	border-bottom: 1px solid var(--color-border);
+	transition: all 0.2s ease;
+}
+
+input:focus {
+	border-color: var(--color-twitter);
+}
+
+textarea {
+	font-size: 20px;
+	width: 100%;
+	height: 300px;
+	padding: 2px;
+	outline: none;
+	border: 2px solid var(--color-border);
+	border-radius: 5px;
+	transition: all 0.2s ease;
+}
+
+textarea:focus {
+	border-color: var(--color-twitter);
 }

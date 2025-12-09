@@ -4,18 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regístrate en Quacker / Quacker</title>
+    <title>Regístrate en {{ config('app.name') }} / {{ config('app.name') }}</title>
+    @vite(['resources/css/app.css'])
     <style>
         main {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        button {
-            border-radius: 10px;
-            padding: 5px 10px;
             border: none;
-            background-color: lightblue;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -24,19 +18,25 @@
     <main>
         <form action="/users" method="POST">
             <label>
-                Nombre: <input type="text" name="display_name" placeholder="Nombre">
-            </label><br>
+                <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Nombre">
+            </label>
             <label>
-                Nombre de usuario: <input type="text" name="username" placeholder="Nombre de usuario">
-            </label><br>
+                <span class="subtext">Nombre de usuario: </span><input type="text" name="username"
+                    placeholder="Nombre de usuario">
+            </label>
             <label>
-                Correo electrónico: <input type="email" name="email" placeholder="Correo electrónico">
-            </label><br>
+                <span class="subtext">Correo electrónico: </span><input type="email" name="email"
+                    placeholder="Correo electrónico">
+            </label>
             <label>
-                Contraseña: <input type="password" name="password" placeholder="Contraseña">
-            </label><br>
-            <button>Completar registro</button>
-            @csrf
+                <span class="subtext">Contraseña: </span><input type="password" name="password"
+                    placeholder="Contraseña">
+            </label>
+            <div class="manage-btns">
+                <button>Completar registro</button>
+                @csrf
+                <a href="/users">Cancelar</a>
+            </div>
         </form>
     </main>
 </body>

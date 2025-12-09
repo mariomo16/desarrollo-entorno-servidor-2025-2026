@@ -4,29 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quashtag Creacion</title>
+    <title>Crear Quashtag / {{ config('app.name') }}</title>
+    @vite(['resources/css/app.css'])
     <style>
         main {
-            width: 80%;
-            margin: 0 auto;
+            border: none;
+            margin-top: 20px;
         }
 
-        button {
-            border-radius: 10px;
-            padding: 5px 10px;
-            border: none;
-            background-color: lightblue;
+        p {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        input {
+            font-size: 20px;
+            width: 100%;
+            padding: 2px;
+            outline: none;
+            border: 2px solid var(--color-border);
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: var(--color-twitter);
+        }
+
+        div.manage-btns a {
+            float: right;
         }
     </style>
 </head>
 
 <body>
     <main>
+        <p>Crea tu Quashtag</p>
+        <br>
         <form action="/quashtags" method="POST">
-            <h1>CREA TU QUASHTAG!!!</h1>
-            <textarea name="name" placeholder="No olvides tu #" rows="3" cols="30"></textarea><br>
-            <button type="submit">Mu malo</button>
-            @csrf
+            <input type="text" name="name" placeholder="🦆MejorQue🐤" required></input>
+            <div class="manage-btns">
+                <button type="submit">¡Quack!</button>
+                @csrf
+                <a href="/quashtags">Cancelar</a>
+            </div>
         </form>
     </main>
 </body>

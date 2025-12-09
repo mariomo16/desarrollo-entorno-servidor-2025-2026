@@ -4,18 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu cuenta / Quacker</title>
+    <title>Tu cuenta / {{ config('app.name') }}</title>
+    @vite(['resources/css/app.css'])
     <style>
         main {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        button {
-            border-radius: 10px;
-            padding: 5px 10px;
             border: none;
-            background-color: lightblue;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -24,18 +18,23 @@
     <main>
         <form action="/users/{{ $user->id }}" method="POST">
             <label>
-                Nombre: <input type="text" name="display_name" placeholder="Nombre" value="{{ $user->display_name }}">
-            </label><br>
+                <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Nombre"
+                    value="{{ $user->display_name }}">
+            </label>
             <label>
-                Nombre de usuario: <input type="text" name="username" placeholder="Nombre"
-                    value="{{ $user->username }}">
-            </label><br>
+                <span class="subtext">Nombre de usuario: </span><input type="text" name="username"
+                    placeholder="Nombre" value="{{ $user->username }}">
+            </label>
             <label>
-                Correo electrónico: <input type="text" name="email" placeholder="Nombre" value="{{ $user->email }}">
-            </label><br>
-            <button>Guardar</button>
-            @csrf
-            @method('PATCH')
+                <span class="subtext">Correo electrónico: </span><input type="text" name="email"
+                    placeholder="Nombre" value="{{ $user->email }}">
+            </label>
+            <div class="manage-btns">
+                <button>Aceptar</button>
+                @csrf
+                @method('PATCH')
+                <a href="/users">Cancelar</a>
+            </div>
         </form>
     </main>
 </body>

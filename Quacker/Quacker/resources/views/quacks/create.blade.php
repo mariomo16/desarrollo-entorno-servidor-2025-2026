@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quacks</title>
+    <title>Quackear / {{ config('app.name') }}</title>
+    @vite(['resources/css/app.css'])
     <style>
         main {
-            width: 80%;
-            margin: 0 auto;
+            border: none;
+            margin-top: 20px;
         }
 
-        button {
-            border-radius: 10px;
-            padding: 5px 10px;
-            border: none;
-            background-color: lightblue;
+        div.manage-btns a {
+            float: right;
         }
     </style>
 </head>
@@ -24,11 +22,15 @@
     <main>
         <form action="/quacks" method="POST">
             <label>
-                Nick: <input type="text" name="display_name" placeholder="Nombre">
-            </label><br>
-            <textarea name="content" placeholder="Escribe tu Quack" rows="3" cols="30"></textarea><br>
-            <button>¡Quackea o muere!</button>
-            @csrf
+                <span class="subtext">Nombre: </span><input type="text" name="display_name"
+                    placeholder="Usuario de Quacker" required>
+            </label>
+            <textarea name="content" placeholder="Quack, quack, ¿qué pasa?" rows="3" cols="30" required></textarea>
+            <div class="manage-btns">
+                <button>¡Quack!</button>
+                @csrf
+                <a href="/quacks">Cancelar</a>
+            </div>
         </form>
     </main>
 </body>
