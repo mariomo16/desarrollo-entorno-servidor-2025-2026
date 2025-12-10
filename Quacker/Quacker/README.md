@@ -11,13 +11,13 @@
 
 ## Instalación
 
-**Clonar el repositorio y entrar a la carpeta**
+### Clonar el repositorio y entrar a la carpeta
 
 ```bash
 git clone https://github.com/mariomo16/Quacker.git && cd Quacker
 ```
 
-**Configurar el proyecto y compilar assets**
+### Configurar el proyecto y compilar assets
 
 ```bash
 composer run setup
@@ -26,20 +26,20 @@ composer run setup
 > [!NOTE]
 > Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
 
-**Ejecutar el entorno de desarrollo**
+### Ejecutar el entorno de desarrollo
 
 ```bash
 php artisan serve
 ```
-
-La aplicación estará disponible en `http://127.0.0.1:8000/`
-
 > [!WARNING]
 > Para desarrollo activo, se recomienda usar:
 >
 > ```bash
 > composer run dev
 > ```
+
+La aplicación estará disponible en `http://127.0.0.1:8000/`
+
 
 ## Gestión de base de datos
 
