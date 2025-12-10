@@ -51,6 +51,7 @@ div.menu-btns a {
 
 div.menu-btns a:hover {
 	background-color: var(--color-background-hover);
+    transform: scale(1.05);
 }
 
 main {
