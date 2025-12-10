@@ -46,10 +46,11 @@
             </article>
         @endforeach
     </main>
-    <div class="menu-btn">
+    <div class="menu-btns">
         <a href="/quacks/create">➕</a>
         <a href="/users">👤</a>
         <a href="/quashtags">#️⃣</a>
+        <a href="/">🏠</a>
     </div>
 </body>
 

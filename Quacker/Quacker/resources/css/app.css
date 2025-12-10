@@ -32,7 +32,7 @@ body {
 	padding: 0;
 }
 
-div.menu-btn {
+div.menu-btns {
 	position: fixed;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ div.menu-btn {
 	left: 20px;
 }
 
-div.menu-btn a {
+div.menu-btns a {
 	padding: 10px;
 	font-size: 2rem;
 	border-radius: 50%;
@@ -49,7 +49,7 @@ div.menu-btn a {
 	transition: all 0.2s ease;
 }
 
-div.menu-btn a:hover {
+div.menu-btns a:hover {
 	background-color: var(--color-background-hover);
 }
 

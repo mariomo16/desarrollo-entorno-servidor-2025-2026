@@ -48,6 +48,7 @@
         <a href="/users/create">➕</a>
         <a href="/quacks">🦆</a>
         <a href="/quashtags">#️⃣</a>
+        <a href="/">🏠</a>
     </div>
 </body>
 

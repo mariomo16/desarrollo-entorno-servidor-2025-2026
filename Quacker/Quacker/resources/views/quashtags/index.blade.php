@@ -33,6 +33,7 @@
         <a href="/quashtags/create">➕</a>
         <a href="/users">👤</a>
         <a href="/quacks">🦆</a>
+        <a href="/">🏠</a>
     </div>
 </body>
 
