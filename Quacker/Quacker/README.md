@@ -22,7 +22,8 @@
     ```bash
     composer run setup
     ```
-    [!INFO] Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
+    [!INFO]
+    Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
 
 3. **Ejecutar el entorno de desarrollo**
 
