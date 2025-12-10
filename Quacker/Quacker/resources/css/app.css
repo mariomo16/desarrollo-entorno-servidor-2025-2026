@@ -91,13 +91,17 @@ div.manage-btns button {
 	transition: all 0.2s ease;
 }
 
-div.manage-btns a:hover {
+div.manage-btns a:hover,
+div.manage-btns button:hover {
 	background-color: var(--color-twitter);
 }
 
 div.manage-btns button:hover {
-	background-color: var(--color-danger);
 	cursor: pointer;
+}
+
+div.manage-btns .delete:hover {
+	background-color: var(--color-danger);
 }
 
 label {

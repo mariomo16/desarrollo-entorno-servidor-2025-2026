@@ -31,7 +31,7 @@
                     <form action="/quacks/{{ $quack->id }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button>Eliminar</button>
+                        <button class="delete">Eliminar</button>
                     </form>
                 </div>
             </article>
