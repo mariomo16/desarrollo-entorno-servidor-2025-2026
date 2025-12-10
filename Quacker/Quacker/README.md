@@ -31,8 +31,6 @@
 
     La aplicación estará disponible en `http://127.0.0.1:8000/`
 
----
-
 ## Gestión de base de datos
 
 Puedes visualizar la base de datos SQLite (`database/database.sqlite`) con:
@@ -40,8 +38,6 @@ Puedes visualizar la base de datos SQLite (`database/database.sqlite`) con:
 -   [DBeaver](https://dbeaver.io) (gratuito, multiplataforma)
 -   [DB Browser for SQLite](https://sqlitebrowser.org) (gratuito, específico SQLite)
 -   [TablePlus](https://tableplus.com) (freemium, interfaz moderna)
-
----
 
 ## Equipo de Desarrollo
 
