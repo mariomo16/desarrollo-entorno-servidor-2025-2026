@@ -44,14 +44,10 @@
             </article>
         @endforeach
     </main>
-    <div class="menu-btn active">
-        <p><a href="/users/create">➕</a></p>
-    </div>
-    <div class="menu-btn second">
-        <p><a href="/quacks">🦆</a></p>
-    </div>
-    <div class="menu-btn third">
-        <p><a href="/quashtags">#️⃣</a></p>
+    <div class="menu-btn">
+        <a href="/users/create">➕</a>
+        <a href="/quacks">🦆</a>
+        <a href="/quashtags">#️⃣</a>
     </div>
 </body>
 

@@ -34,6 +34,10 @@ body {
 
 div.menu-btn {
 	position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 20px;
 	left: 20px;
 }
 
@@ -47,18 +51,6 @@ div.menu-btn a {
 
 div.menu-btn a:hover {
 	background-color: var(--color-background-hover);
-}
-
-div.active {
-	top: 20px;
-}
-
-div.second {
-	top: 100px;
-}
-
-div.third {
-	top: 180px;
 }
 
 main {
