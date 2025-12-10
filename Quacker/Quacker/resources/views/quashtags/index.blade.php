@@ -29,7 +29,7 @@
             </article>
         @endforeach
     </main>
-    <div class="menu-btn">
+    <div class="menu-btns">
         <a href="/quashtags/create">➕</a>
         <a href="/users">👤</a>
         <a href="/quacks">🦆</a>
