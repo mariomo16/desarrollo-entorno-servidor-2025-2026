@@ -19,6 +19,8 @@ git clone https://github.com/mariomo16/Quacker.git && cd Quacker
 
 ### Configurar el proyecto y compilar assets
 
+> Este script instala dependencias de PHP y Node.js, copia el archivo `.env`, genera la key de Laravel, ejecuta las migraciones, ejecuta los seeders de la base de datos y compila los assets.
+
 ```bash
 composer run setup
 ```
