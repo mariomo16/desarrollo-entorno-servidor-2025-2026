@@ -22,16 +22,16 @@
     ```bash
     composer run setup
     ```
-    > [!NOTE]
-    > Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
+> [!NOTE]
+> Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
 
 3. **Ejecutar el entorno de desarrollo**
 
     ```bash
     php artisan serve
     ```
-    > [!WARNING]
-    > Para un entorno de desarollo, es mejor usar `composer run dev`
+> [!WARNING]
+> Para un entorno de desarollo, es mejor usar `composer run dev`
 
     La aplicación estará disponible en `http://127.0.0.1:8000/`
 
