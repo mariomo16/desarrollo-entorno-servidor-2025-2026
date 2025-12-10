@@ -35,7 +35,7 @@ php artisan serve
 > Para desarrollo activo, se recomienda usar:
 >
 > ```bash
-> composer run dev
+> composer run dev:linux || composer run dev
 > ```
 
 La aplicación estará disponible en `http://127.0.0.1:8000/`
