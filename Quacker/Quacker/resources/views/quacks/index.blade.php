@@ -7,6 +7,10 @@
     <title>Quacks / {{ config('app.name') }}</title>
     @vite(['resources/css/app.css'])
     <style>
+        main article:last-child {
+            border-bottom: none;
+        }
+
         article:hover {
             cursor: pointer;
             background-color: var(--color-background-hover);
@@ -33,7 +37,7 @@
                 <div class="manage-btns">
                     <a href="/quacks/{{ $quack->id }}">Mostrar más</a>
                     <a href="/quacks/{{ $quack->id }}/edit">Editar</a>
-                    <form method="POST">
+                    <form action="/quacks/{{ $quack->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button>Eliminar</button>

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quashtags / Quacker</title>
     @vite(['resources/css/app.css'])
+    <style>
+        main article:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 
 <body>

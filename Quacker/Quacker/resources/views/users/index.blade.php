@@ -7,6 +7,10 @@
     <title>Usuarios / {{ config('app.name') }}</title>
     @vite(['resources/css/app.css'])
     <style>
+        main article:last-child {
+            border-bottom: none;
+        }
+
         article:hover {
             cursor: pointer;
             background-color: var(--color-background-hover);
