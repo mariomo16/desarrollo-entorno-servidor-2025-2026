@@ -24,7 +24,7 @@ composer run setup
 ```
 
 > [!NOTE]
-> Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
+> Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo `.env`, genera la key de Laravel, ejecuta las migraciones, ejecuta los seeders de la base de datos y compila los assets.
 
 ### Ejecutar el entorno de desarrollo
 
