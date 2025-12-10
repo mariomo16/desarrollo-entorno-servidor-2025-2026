@@ -13,33 +13,33 @@
 
 1. **Clonar el repositorio y entrar a la carpeta**
 
-    ```bash
-    git clone https://github.com/mariomo16/Quacker.git && cd Quacker
-    ```
+```bash
+git clone https://github.com/mariomo16/Quacker.git && cd Quacker
+```
 
 2. **Configurar el proyecto y compilar assets**
 
-    ```bash
-    composer run setup
-    ```
+```bash
+composer run setup
+```
+
+> [!NOTE]
+> Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
 
 3. **Ejecutar el entorno de desarrollo**
 
-    ```bash
-    php artisan serve
-    ```
+```bash
+php artisan serve
+```
 
-    La aplicación estará disponible en `http://127.0.0.1:8000/`
+La aplicación estará disponible en `http://127.0.0.1:8000/`
 
 > [!WARNING]
 > Para desarrollo activo, se recomienda usar:
+>
 > ```bash
 > composer run dev
 > ```
-
-> [!NOTE]
-> `composer run setup` prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo .env, genera la key de Laravel, ejecuta las migraciones y compila los assets.
-
 
 ## Gestión de base de datos
 
@@ -52,4 +52,3 @@ Puedes visualizar la base de datos SQLite (`database/database.sqlite`) con:
 ## Equipo de Desarrollo
 
 Desarrollado por [@mariomo16](https://github.com/mariomo16), [@alfonsogomez45](https://github.com/alfonsogomez45) y [@ByAlberto](https://github.com/ByAlberto).
-
