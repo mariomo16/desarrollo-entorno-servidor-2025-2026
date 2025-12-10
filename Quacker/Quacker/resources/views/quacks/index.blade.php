@@ -11,15 +11,6 @@
             border-bottom: none;
         }
 
-        article:hover {
-            cursor: pointer;
-            background-color: var(--color-background-hover);
-        }
-
-        article p b:hover {
-            text-decoration: underline;
-        }
-
         form {
             display: inline;
         }

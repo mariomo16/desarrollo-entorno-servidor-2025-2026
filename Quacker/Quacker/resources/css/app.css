@@ -18,7 +18,7 @@
 	--color-text-white: #f7f9f9;
 	--color-text-black: #0f1419;
 	--color-subtext: #8b98a5;
-	--color-link: #1d9bf0;
+	--color-danger: #e6212e;
 	--color-border: #38444d;
 	--color-btn: #eff3f4;
 }
@@ -34,16 +34,16 @@ body {
 
 div.menu-btns {
 	position: fixed;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	top: 20px;
 	left: 20px;
 }
 
 div.menu-btns a {
 	padding: 10px;
-	font-size: 2rem;
+	font-size: 2.5rem;
 	border-radius: 50%;
 	cursor: pointer;
 	transition: all 0.2s ease;
@@ -51,7 +51,7 @@ div.menu-btns a {
 
 div.menu-btns a:hover {
 	background-color: var(--color-background-hover);
-    transform: scale(1.05);
+	transform: scale(1.1);
 }
 
 main {
@@ -89,12 +89,15 @@ div.manage-btns button {
 	padding: 6px 16px;
 	font-weight: bold;
 	transition: all 0.2s ease;
-	cursor: pointer; /* Para el </button> */
 }
 
-div.manage-btns a:hover,
-div.manage-btns button:hover {
+div.manage-btns a:hover {
 	background-color: var(--color-twitter);
+}
+
+div.manage-btns button:hover {
+	background-color: var(--color-danger);
+	cursor: pointer;
 }
 
 label {
