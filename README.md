@@ -1,25 +1,54 @@
-# Desarrollo web en entorno servidor (25-26)
+# 🦆 Quacker
 
-## [→](./UT01/) UT01: Arquitectura y desarrollo web
+> Aplicación web estilo X (Twitter) desarrollada con Laravel, con enfoque en backend.
 
-📝 **Tarea:** [Análisis comparativo de tecnologías web](./UT01/Arquitectura%20cliente%20servidor.drawio)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://www.php.net)
+[![SQLite](https://img.shields.io/badge/SQLite-3.26.0+-green.svg)](https://www.sqlite.org)
+[![Release](https://img.shields.io/github/v/release/mariomo16/Quacker)](https://github.com/mariomo16/Quacker/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/mariomo16/Quacker)](https://github.com/mariomo16/Quacker/commits/main)
+[![Issues](https://img.shields.io/github/issues/mariomo16/Quacker)](https://github.com/mariomo16/Quacker/issues)
 
-## [→](./UT02/) UT02: Sintaxis básica de PHP
+## Instalación
 
-🧪 **Examen:** [Examen UT02](./Examenes%20y%20Tareas/examen-practico-ut02.php)
+### Clonar el repositorio y entrar a la carpeta
 
-📝 **Tarea:** [Tarea UT02 y UT03](./Examenes%20y%20Tareas/Tarea%20UT02%20y%20UT3)
+```bash
+git clone https://github.com/mariomo16/Quacker.git && cd Quacker
+```
 
-## [→](./UT03/) UT03: Sintaxis avanzada de PHP
+### Configurar el proyecto y compilar assets
 
-🧪 **Examen:** [Examen UT03](./Examenes%20y%20Tareas/examen-practico-ut03.php)
+```bash
+composer run setup
+```
 
-📝 **Tarea:** [Tarea UT02 y UT03](./Examenes%20y%20Tareas/Tarea%20UT02%20y%20UT3)
+> [!NOTE]
+> Este script prepara todo el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo `.env`, genera la key de Laravel, ejecuta las migraciones, ejecuta los seeders de la base de datos y compila los assets.
 
-## [→](./UT04/) UT04: Cookies y sesiones
+### Ejecutar el entorno de desarrollo
 
-🧪 **Examen:** [Examen UT04](./Examenes%20y%20Tareas/examen-practico-ut04.php)
+```bash
+php artisan serve
+```
+> [!WARNING]
+> Para desarrollo activo, se recomienda usar:
+>
+> ```bash
+> composer run dev:linux || composer run dev
+> ```
 
-## [→](./UT05/) UT05: MVC y frameworks relacionados
+La aplicación estará disponible en `http://127.0.0.1:8000/`
 
-🧪 **Examen:** [Examen UT05](./Examenes%20y%20Tareas/examen-practico-ut05.php)
+
+## Gestión de base de datos
+
+Puedes visualizar la base de datos SQLite (`database/database.sqlite`) con:
+
+-   [DBeaver](https://dbeaver.io) (gratuito, multiplataforma)
+-   [DB Browser for SQLite](https://sqlitebrowser.org) (gratuito, específico SQLite)
+-   [TablePlus](https://tableplus.com) (freemium, interfaz moderna)
+
+## Equipo de Desarrollo
+
+Desarrollado por [@mariomo16](https://github.com/mariomo16), [@alfonsogomez45](https://github.com/alfonsogomez45) y [@ByAlberto](https://github.com/ByAlberto).
