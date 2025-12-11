@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -21,26 +22,16 @@ class SessionController extends Controller
      */
     public function create()
     {
-        return view('/auth.create');
+        return view('auth.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SessionRequest $request)
     {
         // Validaciones a los campos de inicio de sesion
-        $attributes = request()->validate(
-            [
-                'email' => ['required', 'email'],
-                'password' => ['required']
-            ],
-            [
-                'email.required' => 'El correo electrónico es obligatorio',
-                'email.email' => 'Introduce un correo electrónico válido',
-                'password' => 'La contraseña es obligatoria'
-            ]
-        );
+        $attributes = $request->validated();
 
         // Comprueba si no existen los datos introducidos
         if (!Auth::attempt($attributes)) {
@@ -82,8 +73,9 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        Auth::logout();
+        return redirect('/posts');
     }
 }

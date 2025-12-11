@@ -12,3 +12,4 @@ Route::resource('posts', PostController::class);
 
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
+Route::get('/logout', [SessionController::class, 'destroy']);

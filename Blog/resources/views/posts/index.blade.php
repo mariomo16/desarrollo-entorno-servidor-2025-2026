@@ -10,7 +10,8 @@
 <body>
     <main>
         @auth
-            <a href="">Cerrar sesion</a>
+        <h2>Bienvenido {{ Auth::user()->name }}</h2>
+            <a href="/logout">Cerrar sesion</a>
         @endauth
         @guest
             <a href="/login">Iniciar sesion</a>
