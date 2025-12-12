@@ -46,7 +46,7 @@
                 <td><a href="/ofertas/{{ $oferta->id }}">Ver detalles</a></td>
                 <td><a href="/ofertas/{{ $oferta->id }}/edit">Editar</a></td>
                 <td>
-                    @can('manage-oferta', $oferta)
+                    @can('manage', $oferta)
                         <form method="POST" action="/ofertas/{{ $oferta->id }}">
                             @method('DELETE')
                             @csrf
