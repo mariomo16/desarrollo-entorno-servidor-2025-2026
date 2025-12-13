@@ -12,20 +12,32 @@
 }
 
 :root {
-	--color-twitter: #1da1f2;
+	/* Twitter/X */
+	--color-primary: #1da1f2;
+
+	/* Fondos */
 	--color-background: #15202b;
 	--color-background-hover: #1c2731;
-	--color-text-white: #f7f9f9;
-	--color-text-black: #0f1419;
-	--color-subtext: #8b98a5;
-	--color-danger: #e6212e;
+
+	/* Bordes */
 	--color-border: #38444d;
-	--color-btn: #eff3f4;
+
+	/* Texto */
+	--color-text-primary: #f7f9f9;
+	--color-text-secondary: #8b98a5;
+	--color-text-inverse: #0f1419;
+
+	/* Botones */
+	--color-btn-hover: #2a353f;
+	--color-btn-light: #eff3f4;
+	--color-btn-light-hover: #d7dbdc;
+	--color-btn-danger: #f4212e;
+	--color-btn-danger-hover: #dc1e29;
 }
 
 body {
 	background-color: var(--color-background);
-	color: var(--color-text-white);
+	color: var(--color-text-primary);
 	font-family: "Segoe UI", sans-serif;
 	font-size: 15px;
 	margin: 0;
@@ -50,7 +62,7 @@ div.menu-btns a {
 }
 
 div.menu-btns a:hover {
-	background-color: var(--color-background-hover);
+	background-color: var(--color-btn-hover);
 	transform: scale(1.1);
 }
 
@@ -71,19 +83,18 @@ article {
 }
 
 span.subtext {
-	color: var(--color-subtext);
+	color: var(--color-text-secondary);
 }
 
-div.manage-btns {
-	margin-top: 20px;
+div.resource-actions {
+	margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
 }
 
-div.manage-btns a {
-	margin-right: 10px;
-}
-
-div.manage-btns a,
-div.manage-btns button {
+div.resource-actions a,
+div.resource-actions button {
 	border: 1px solid var(--color-border);
 	border-radius: 50px;
 	padding: 6px 16px;
@@ -91,17 +102,27 @@ div.manage-btns button {
 	transition: all 0.2s ease;
 }
 
-div.manage-btns a:hover,
-div.manage-btns button:hover {
-	background-color: var(--color-twitter);
+div.resource-actions .delete {
+	color: var(--color-btn-danger);
+    margin-right: auto;
 }
 
-div.manage-btns button:hover {
+div.resource-actions a:hover,
+div.resource-actions button:hover {
+	background-color: var(--color-primary);
+}
+
+div.resource-actions button:hover {
 	cursor: pointer;
 }
 
-div.manage-btns .delete:hover {
-	background-color: var(--color-danger);
+div.resource-actions .delete:hover {
+	background-color: var(--color-btn-danger-hover);
+    color: var(--color-text-primary);
+}
+
+div.resource-actions .cancel:hover {
+	background-color: var(--color-background-hover);
 }
 
 label {
@@ -121,7 +142,7 @@ input {
 }
 
 input:focus {
-	border-color: var(--color-twitter);
+	border-color: var(--color-primary);
 }
 
 textarea {
@@ -136,5 +157,5 @@ textarea {
 }
 
 textarea:focus {
-	border-color: var(--color-twitter);
+	border-color: var(--color-primary);
 }

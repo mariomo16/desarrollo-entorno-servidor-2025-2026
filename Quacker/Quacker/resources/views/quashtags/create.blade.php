@@ -31,7 +31,7 @@
             border-color: var(--color-twitter);
         }
 
-        div.manage-btns a {
+        div.manage-btns {
             float: right;
         }
     </style>
@@ -42,11 +42,11 @@
         <p>Crea tu Quashtag</p>
         <br>
         <form action="/quashtags" method="POST">
+            @csrf
             <input type="text" name="name" placeholder="🦆MejorQue🐤" required></input>
             <div class="manage-btns">
+                <a href="/quashtags" class="cancel">Cancelar</a>
                 <button type="submit">¡Quack!</button>
-                @csrf
-                <a href="/quashtags">Cancelar</a>
             </div>
         </form>
     </main>

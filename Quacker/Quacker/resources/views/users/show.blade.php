@@ -36,10 +36,10 @@
             <div class="manage-btns">
                 <a href="/users">Volver</a>
                 <a href="/users/{{ $user->id }}/edit">Editar perfil</a>
-                <form action="/users/{{ $user->id }}" method="POST">
+                <form method="POST" action="/users/{{ $user->id }}">
                     @csrf
                     @method('DELETE')
-                    <button>Eliminar</button>
+                    <button class="delete">Eliminar</button>
                 </form>
             </div>
         </article>

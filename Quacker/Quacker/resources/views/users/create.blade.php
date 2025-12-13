@@ -16,7 +16,8 @@
 
 <body>
     <main>
-        <form action="/users" method="POST">
+        <form method="POST" action="/users">
+            @csrf
             <label>
                 <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Nombre">
             </label>
@@ -33,9 +34,8 @@
                     placeholder="Contraseña">
             </label>
             <div class="manage-btns">
+                <a href="/users" class="cancel">Cancelar</a>
                 <button>Completar registro</button>
-                @csrf
-                <a href="/users">Cancelar</a>
             </div>
         </form>
     </main>

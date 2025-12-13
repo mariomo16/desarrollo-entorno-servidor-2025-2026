@@ -12,7 +12,7 @@
             margin-top: 20px;
         }
 
-        div.manage-btns a {
+        div.manage-btns {
             float: right;
         }
     </style>
@@ -20,16 +20,16 @@
 
 <body>
     <main>
-        <form action="/quacks" method="POST">
+        <form method="POST" action="/quacks">
+            @csrf
             <label>
-                <span class="subtext">Nombre: </span><input type="text" name="display_name"
-                    placeholder="Usuario de Quacker" required>
+                <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Pato Quackero"
+                    required>
             </label>
             <textarea name="content" placeholder="Quack, quack, ¿qué pasa?" rows="3" cols="30" required></textarea>
-            <div class="manage-btns">
-                <button>¡Quack!</button>
-                @csrf
-                <a href="/quacks">Cancelar</a>
+            <div class="action-btns">
+                <a href="/quacks" class="cancel">Cancelar</a>
+                <button type="submit">¡Quack!</button>
             </div>
         </form>
     </main>
