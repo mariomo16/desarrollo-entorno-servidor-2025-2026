@@ -29,14 +29,16 @@ class QuashtagController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string'
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|string'
+            ],
+            [
+                'name.required' => 'Este campo es obligatorio'
+            ]
+        );
 
-        Quashtag::create([
-            'name' => $request->name
-        ]);
-
+        Quashtag::create($request->all());
         return redirect('/quashtags');
     }
 
@@ -45,15 +47,19 @@ class QuashtagController extends Controller
      */
     public function show(Quashtag $quashtag)
     {
-        //
+        return view('quashtags.show', [
+            'quashtag' => $quashtag
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Quashtag $quashtag)
     {
-        //
+        return view('quashtags.edit', [
+            'quashtag' => $quashtag
+        ]);
     }
 
     /**

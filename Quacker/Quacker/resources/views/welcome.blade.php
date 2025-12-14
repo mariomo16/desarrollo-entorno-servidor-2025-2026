@@ -25,7 +25,7 @@
         }
 
         nav a:hover {
-            color: var(--color-twitter);
+            color: var(--color-primary);
         }
 
         footer {

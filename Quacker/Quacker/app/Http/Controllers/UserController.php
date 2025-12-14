@@ -30,6 +30,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'username' => 'required|max:15',
+                'display_name' => 'required|max:50',
+                'email' => 'required|email',
+                'password' => 'required',
+            ],
+            [
+                'username' => 'Obligatorio',
+                'display_name' => 'Obligatorio',
+                'email' => 'Obligatorio',
+                'password' => 'Obligatorio',
+            ]
+        );
+
         User::create($request->all());
         return redirect('/users');
     }

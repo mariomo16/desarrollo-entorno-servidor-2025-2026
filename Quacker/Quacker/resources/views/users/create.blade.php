@@ -11,6 +11,10 @@
             border: none;
             margin-top: 20px;
         }
+
+        p {
+            display: inline;
+        }
     </style>
 </head>
 
@@ -19,21 +23,33 @@
         <form method="POST" action="/users">
             @csrf
             <label>
-                <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Nombre">
+                <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Nombre" value="{{ old('display_name') }}">
+                @error('display_name')
+                    <p style="color: red">{{ $message }}</p>
+                @enderror
             </label>
             <label>
                 <span class="subtext">Nombre de usuario: </span><input type="text" name="username"
                     placeholder="Nombre de usuario">
+                @error('username')
+                    <p style="color: red">{{ $message }}</p>
+                @enderror
             </label>
             <label>
                 <span class="subtext">Correo electrónico: </span><input type="email" name="email"
                     placeholder="Correo electrónico">
+                @error('email')
+                    <p style="color: red">{{ $message }}</p>
+                @enderror
             </label>
             <label>
                 <span class="subtext">Contraseña: </span><input type="password" name="password"
                     placeholder="Contraseña">
+                @error('password')
+                    <p style="color: red">{{ $message }}</p>
+                @enderror
             </label>
-            <div class="manage-btns">
+            <div class="resource-actions">
                 <a href="/users" class="cancel">Cancelar</a>
                 <button>Completar registro</button>
             </div>

@@ -11,10 +11,6 @@
             border: none;
             margin-top: 20px;
         }
-
-        div.manage-btns {
-            float: right;
-        }
     </style>
 </head>
 
@@ -25,9 +21,15 @@
             <label>
                 <span class="subtext">Nombre: </span><input type="text" name="display_name" placeholder="Pato Quackero"
                     required>
+                @error('display_name')
+                    <p style="color: red">{{ $message }}</p>
+                @enderror
             </label>
             <textarea name="content" placeholder="Quack, quack, ¿qué pasa?" rows="3" cols="30" required></textarea>
-            <div class="action-btns">
+            @error('content')
+                <p style="color: red">{{ $message }}</p>
+            @enderror
+            <div class="resource-actions">
                 <a href="/quacks" class="cancel">Cancelar</a>
                 <button type="submit">¡Quack!</button>
             </div>
