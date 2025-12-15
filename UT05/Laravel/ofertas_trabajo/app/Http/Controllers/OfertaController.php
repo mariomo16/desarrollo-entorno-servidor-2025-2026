@@ -16,9 +16,27 @@ class OfertaController extends Controller
     {
         return view('ofertas.index', [
             'ofertas' => Oferta::with([
-                'empresa:id,nombre',
-                'empresa.user'
-            ])->get()
+                'empresa:id,nombre,user_id',
+                'empresa.user:id'
+            ])
+                //->has('candidatos')
+                //->where('descripcion', 'LIKE', '%ullam%')
+                /*
+                ->whereHas('empresa', function ($query) {
+                    $query->where('user_id', '=', Auth::user()->id);
+                })
+                */
+                /*
+                ->when(request('titutlo'), function ($query) {
+                    $query->where('titulo', 'LIKE', '%' . request('titulo') . '%');
+                })
+                */
+                ->get()
+
+            // has: limita las instancias cargadas en base a si tienen o no tienen valor en alguna de sus relaciones
+            // where: aplicar operaciones de filtrado de BBDD sobre uno de los atributos del modelo
+            // whereHas: 
+
         ]);
     }
 
