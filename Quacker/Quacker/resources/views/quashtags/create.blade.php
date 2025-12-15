@@ -6,47 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear quashtag / {{ config('app.name') }}</title>
     @vite(['resources/css/app.css'])
-    <style>
-        main {
-            border: none;
-            margin-top: 20px;
-        }
-
-        p {
-            font-size: 20px;
-            text-align: center;
-        }
-
-        input {
-            font-size: 20px;
-            width: 100%;
-            padding: 2px;
-            outline: none;
-            border: 2px solid var(--color-border);
-            border-radius: 5px;
-            transition: all 0.2s ease;
-        }
-
-        input:focus {
-            border-color: var(--color-twitter);
-        }
-
-        div.manage-btns {
-            float: right;
-        }
-    </style>
 </head>
 
 <body>
     <main>
-        <p>Crea tu Quashtag</p>
-        <br>
-        <form action="/quashtags" method="POST">
+        <form method="POST" action="/quashtags" class="resource-form">
             @csrf
-            <input type="text" name="name" placeholder="🦆MejorQue🐤" required></input>
-            <div class="manage-btns">
-                <a href="/quashtags" class="cancel">Cancelar</a>
-                <button type="submit">¡Quack!</button>
+            <label>
+                <span class="text-muted">Quashtag</span>
+                @error('name')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+                <input type="text" name="name" placeholder="QuackerEsMejorQueX" value="{{ old('name') }}"
+                    required>
+            </label>
+            <div class="resource-actions resource-actions--end">
+                <a href="/quashtags" class="btn-cancel">Cancelar</a>
+                <button class="btn-save">Crear quashtag</button>
             </div>
         </form>
     </main>

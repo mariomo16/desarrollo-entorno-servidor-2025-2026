@@ -4,38 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quashtag {{ $quashtag->id }} / {{ config('app.name') }}</title>
+    <title>🦆{{ $quashtag->name }} / {{ config('app.name') }}</title>
     @vite(['resources/css/app.css'])
-    <style>
-        main {
-            border: none;
-            margin-top: 20px;
-        }
-
-        div.resource-actions {
-            float: right;
-        }
-    </style>
 </head>
 
 <body>
     <main>
-        <form action="/quashtags/{{ $quashtag->id }}" method="POST">
+        <form method="POST" action="/quashtags/{{ $quashtag->id }}" class="resource-form">
+            @csrf
+            @method('PATCH')
             <label>
-                <span class="subtext">Nombre: </span><input type="text" name="name"
-                    placeholder="Usuario de Quacker" value="{{ $quashtag->name }}" maxlength="255" required>
+                <span class="text-muted">Quashtag</span>
+                @error('name')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+                <input type="text" name="name" placeholder="QuackerEsMejorQueX" value="{{ $quashtag->name }}"
+                    required>
             </label>
-            <div class="resource-actions">
-                <button>¡Quack!</button>
-                @csrf
-                @method('PATCH')
-                <a href="/quashtags" class="cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                        <path
-                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                        <path
-                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                    </svg></a>
+            <div class="resource-actions resource-actions--end">
+                <a href="/quashtags" class="btn-cancel">Cancelar</a>
+                <button type="submit" class="btn-save">Guardar</button>
             </div>
         </form>
     </main>

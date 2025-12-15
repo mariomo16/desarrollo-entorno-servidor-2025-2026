@@ -4,42 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario: {{ '@' }}{{ $user->username }} / {{ config('app.name') }}</title>
+    <title>{{ '@' }}{{ $user->username }} / {{ config('app.name') }}</title>
     @vite(['resources/css/app.css'])
-    <style>
-        article p:first-child {
-            font-size: 20px;
-            line-height: 24px;
-            font-weight: bolder;
-        }
-
-        article p.user-content {
-            line-height: 12px;
-            margin-bottom: 5px;
-        }
-
-        form {
-            display: inline;
-        }
-    </style>
 </head>
 
 <body>
     <main>
-        <article>
+        <article class="show">
             <p>{{ $user->display_name }}</p>
-            <p><span class="subtext">{{ '@' }}{{ $user->username }}</span></p>
-            <br>
-            <p class="user-content"><span class="subtext">Correo electrónico: {{ $user->email }}</span></p>
-            <p class="user-content"><span class="subtext">Se unió en {{ $user->created_at->isoFormat('MMMM') }} de
+            <p><span class="text-muted">{{ '@' }}{{ $user->username }}</span></p>
+            <p class="user-content"><span class="text-muted">Correo electrónico: {{ $user->email }}</span></p>
+            <p class="user-content"><span class="text-muted">Se unió en {{ $user->created_at->isoFormat('MMMM') }} de
                     {{ $user->created_at->isoFormat('YYYY') }}</span></p>
-            <div class="manage-btns">
+
+            <div class="resource-actions">
                 <a href="/users">Volver</a>
-                <a href="/users/{{ $user->id }}/edit">Editar perfil</a>
+                <a href="/users/{{ $user->id }}/edit">Editar</a>
                 <form method="POST" action="/users/{{ $user->id }}">
                     @csrf
                     @method('DELETE')
-                    <button class="delete">Eliminar</button>
+                    <button class="btn-delete">Eliminar</button>
                 </form>
             </div>
         </article>

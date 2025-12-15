@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,9 +6,8 @@
 @source '../**/*.js';
 
 @theme {
-	--font-sans:
-		"Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 :root {
@@ -44,7 +43,7 @@ body {
 	padding: 0;
 }
 
-div.menu-btns {
+nav.nav-menu {
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -53,15 +52,17 @@ div.menu-btns {
 	left: 20px;
 }
 
-div.menu-btns a {
+nav.nav-menu a {
+    display: block;
+    margin: auto;
 	padding: 10px;
-	font-size: 2.5rem;
 	border-radius: 50%;
 	cursor: pointer;
 	transition: all 0.2s ease;
 }
 
-div.menu-btns a:hover {
+nav.nav-menu a:hover {
+    color: var(--color-primary);
 	background-color: var(--color-btn-hover);
 	transform: scale(1.1);
 }
@@ -70,19 +71,27 @@ main {
 	width: 600px;
 	margin: 0 auto;
 	padding: 0;
-	border-left: 1px solid var(--color-border);
-	border-right: 1px solid var(--color-border);
 }
 
 article {
 	margin: 0;
 	padding: 12px 16px;
 	line-height: 20px;
-	border-bottom: 1px solid var(--color-border);
+	border: 1px solid var(--color-border);
 	transition: all 0.2s ease;
 }
 
-span.subtext {
+article.show {
+	margin: 30% 0;
+    height: fit-content;
+	padding: 12px 16px;
+	line-height: 20px;
+    text-align: center;
+	border-radius: 10px;
+    justify-items: center;
+}
+
+span.text-muted {
 	color: var(--color-text-secondary);
 }
 
@@ -93,22 +102,32 @@ div.resource-actions {
     gap: 0.5rem;
 }
 
+div.resource-actions--end {
+    justify-content: flex-end;
+}
+
 div.resource-actions a,
 div.resource-actions button {
 	border: 1px solid var(--color-border);
 	border-radius: 50px;
 	padding: 6px 16px;
-	font-weight: bold;
 	transition: all 0.2s ease;
 }
 
-div.resource-actions .delete {
+div.resource-actions .btn-delete {
 	color: var(--color-btn-danger);
-    margin-right: auto;
 }
 
-div.resource-actions a:hover,
-div.resource-actions button:hover {
+div.resource-actions .btn-save:hover {
+    color: var(--color-text-inverse);
+    background-color: var(--color-text-primary);
+}
+
+div.resource-actions .btn-cancel:hover {
+    background-color: var(--color-background-hover);
+}
+
+div.resource-actions a:hover {
 	background-color: var(--color-primary);
 }
 
@@ -116,7 +135,7 @@ div.resource-actions button:hover {
 	cursor: pointer;
 }
 
-div.resource-actions .delete:hover {
+div.resource-actions .btn-delete:hover {
 	background-color: var(--color-btn-danger-hover);
     color: var(--color-text-primary);
 }
@@ -125,37 +144,82 @@ div.resource-actions .cancel:hover {
 	background-color: var(--color-background-hover);
 }
 
-label {
-	display: block;
-	margin-bottom: 0.5rem;
+form.resource-form {
+    margin: 30% 0;
+    height: fit-content;
+	padding: 12px 16px;
+    border: 1px solid var(--color-border);
+	border-radius: 10px;
+	line-height: 20px;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
-label,
-input {
-	font-size: 20px;
+form label {
+    font-size: large;
 }
 
-input {
-	outline: none;
-	border-bottom: 1px solid var(--color-border);
+form input {
+    width: 100%;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    font-size: x-large;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+form input:focus {
+    border: 1px solid var(--color-primary);
+}
+
+form textarea {
+    display: inline-block;
+    height: 200px;
+    margin-top: 0.4rem;
+    font-size: large;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+form textarea:focus {
+    border: 1px solid var(--color-primary);
+}
+
+p.error-message {
+    float: inline-end;
+    color: var(--color-btn-danger);
+}
+
+button.btn-login {
+	padding: 12px 16px;
+	margin-top: 20px;
+	background-color: var(--color-primary);
+	border: 1px solid var(--color-border);
+	border-radius: 50px;
 	transition: all 0.2s ease;
 }
 
-input:focus {
-	border-color: var(--color-primary);
+button.btn-login:hover {
+	cursor: pointer;
+	color: var(--color-primary);
+	background-color: var(--color-btn-light-hover);
 }
 
-textarea {
-	font-size: 20px;
+footer {
+	position: fixed;
+	bottom: 0;
+	margin-bottom: 10px;
 	width: 100%;
-	height: 300px;
-	padding: 2px;
-	outline: none;
-	border: 2px solid var(--color-border);
-	border-radius: 5px;
-	transition: all 0.2s ease;
-}
-
-textarea:focus {
-	border-color: var(--color-primary);
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: large;
 }

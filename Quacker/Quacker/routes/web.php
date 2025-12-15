@@ -6,7 +6,7 @@ use App\Http\Controllers\QuackController;
 use App\Http\Controllers\QuashtagController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/quacks');
 });
 
 Route::resource('users', UserController::class);
