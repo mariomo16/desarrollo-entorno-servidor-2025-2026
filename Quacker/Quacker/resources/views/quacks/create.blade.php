@@ -13,6 +13,13 @@
         <form method="POST" action="/quacks" class="resource-form">
             @csrf
             <label>
+                <span class="text-muted">ID Usuario</span>
+                @error('content')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+                <input type="number" name="user_id">
+            </label>
+            <label>
                 <span class="text-muted">Quack, quack, ¿qué pasa?</span>
                 @error('content')
                     <p class="error-message">{{ $message }}</p>
