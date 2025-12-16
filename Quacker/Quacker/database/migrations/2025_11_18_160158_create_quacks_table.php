@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,8 +13,7 @@ return new class extends Migration {
     {
         Schema::create('quacks', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('display_name', 50); // Mientras no haya relaciones con users
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('content');
             $table->timestamps();
         });

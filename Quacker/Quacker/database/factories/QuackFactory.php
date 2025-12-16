@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Quack>
@@ -17,7 +18,7 @@ class QuackFactory extends Factory
     public function definition(): array
     {
         return [
-            'display_name' => fake()->name(),
+            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
             'content' => fake()->text(280),
         ];
     }
