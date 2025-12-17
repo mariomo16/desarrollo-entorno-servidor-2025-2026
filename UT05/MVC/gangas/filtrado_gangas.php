@@ -1,38 +1,39 @@
 <?php
-    require_once 'Database.php';
-    require_once 'Hashtag.php';
-    require_once 'User.php';
+require_once 'Database.php';
+require_once 'Hashtag.php';
+require_once 'User.php';
 
-    session_start();
-    
-    // Inicializar base de datos
-    new Database();
+session_start();
 
-    $db = Database::getConnection();
-    // Si no hay sesión, redirigir al login
-    if (!isset($_SESSION['user_nickname'])) {
-        header('Location: login.php');
-        exit;
-    }
+// Inicializar base de datos
+new Database();
 
-    // Verificar si hay filtro de categoría
-    if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
-        $categoria = $_GET['categoria'];
-        $gangas = Hashtag::getGangasByNombre($categoria);
-        $user = User::getById($_SESSION['user_id']);
-    } else {
-        // Por seguridad, si no hay categoría, puedes redirigir o mostrar todas
-        $gangas = Ganga::getAll();
-    }
+$db = Database::getConnection();
+// Si no hay sesión, redirigir al login
+if (!isset($_SESSION['user_nickname'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Verificar si hay filtro de categoría
+if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
+    $categoria = $_GET['categoria'];
+    $gangas = Hashtag::getGangasByNombre($categoria);
+    $user = User::getById($_SESSION['user_id']);
+} else {
+    // Por seguridad, si no hay categoría, puedes redirigir o mostrar todas
+    $gangas = Ganga::getAll();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Listado de Gangas</title>
 </head>
-<body>
 
+<body>
     <div style="display: flex; justify-content: space-between;">
 
         <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['user_nickname']); ?></h1>
@@ -40,7 +41,6 @@
         <p><a href="login.php">Cerrar sesión</a></p>
 
     </div>
-
 
     <section>
         <h2>Listado de Gangas</h2>
@@ -56,12 +56,7 @@
                 <span>(<?= $ganga->countLikes() ?>)</span>
 
                 <a href="like.php?ganga_id=<?= $ganga->getId() ?>">
-                    <img
-                        src="./img/<?= $hasLiked ? 'down.png' : 'up.png' ?>"
-                        alt="like"
-                        width="15"
-                        style="cursor:pointer;"
-                    >
+                    <img src="./img/<?= $hasLiked ? 'down.png' : 'up.png' ?>" alt="like" width="15" style="cursor:pointer;">
                 </a>
 
                 <div class="hashtags">
@@ -71,9 +66,9 @@
                         </a>
                     <?php endforeach; ?>
                 </div>
-
-        <?php endforeach; ?>
+            <?php endforeach; ?>
     </section>
 
 </body>
+
 </html>

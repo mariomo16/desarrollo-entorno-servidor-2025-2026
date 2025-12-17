@@ -1,12 +1,14 @@
 <?php
-class Ganga {
+class Ganga
+{
     private $id;
     private $titulo;
     private $descripcion;
     private $precio;
     private $hashtags = []; // Array de hashtags asociados
 
-    public function __construct($id, $titulo, $descripcion, $precio, $hashtags = []) {
+    public function __construct($id, $titulo, $descripcion, $precio, $hashtags = [])
+    {
         $this->id = $id;
         $this->titulo = $titulo;
         $this->descripcion = $descripcion;
@@ -15,28 +17,34 @@ class Ganga {
     }
 
     // ------------------- Getters -------------------
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getTitulo() {
+    public function getTitulo()
+    {
         return $this->titulo;
     }
 
-    public function getDescripcion() {
+    public function getDescripcion()
+    {
         return $this->descripcion;
     }
 
-    public function getPrecio() {
+    public function getPrecio()
+    {
         return $this->precio;
     }
 
-    public function getHashtags() {
+    public function getHashtags()
+    {
         return $this->hashtags;
     }
 
     // ------------------- Obtener todas las gangas -------------------
-    public static function getAll() {
+    public static function getAll()
+    {
         $db = Database::getConnection();
         $result = $db->query('SELECT * FROM gangas'); //linea 41
         $gangas = [];
@@ -48,7 +56,8 @@ class Ganga {
     }
 
     // ------------------- Obtener ganga por ID -------------------
-    public static function getById($id) {
+    public static function getById($id)
+    {
         $db = Database::getConnection();
         $stmt = $db->prepare('SELECT * FROM gangas WHERE id = :id');
         $stmt->bindValue(':id', $id, SQLITE3_INTEGER);
@@ -62,7 +71,8 @@ class Ganga {
     }
 
     // ------------------- Obtener hashtags de una ganga -------------------
-    public static function getHashtagsByGanga($ganga_id) {
+    public static function getHashtagsByGanga($ganga_id)
+    {
         $db = Database::getConnection();
         $stmt = $db->prepare('
             SELECT h.nombre 
@@ -80,7 +90,8 @@ class Ganga {
     }
 
     // ------------------- Contar likes -------------------
-    public function countLikes() {
+    public function countLikes()
+    {
         $db = Database::getConnection();
         $stmt = $db->prepare(
             'SELECT COUNT(*) as total FROM user_likes WHERE ganga_id = :ganga_id'
@@ -93,4 +104,3 @@ class Ganga {
     }
 
 }
-?>

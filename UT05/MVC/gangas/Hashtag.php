@@ -1,26 +1,31 @@
 <?php
 require_once 'Ganga.php';
 
-class Hashtag {
+class Hashtag
+{
     private $id;
     private $nombre;
 
-    public function __construct($id, $nombre) {
+    public function __construct($id, $nombre)
+    {
         $this->id = $id;
         $this->nombre = $nombre;
     }
 
     // ------------------- Getters -------------------
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getNombre() {
+    public function getNombre()
+    {
         return $this->nombre;
     }
 
     // ------------------- Obtener hashtag por nombre -------------------
-    public static function getByNombre($nombre) {
+    public static function getByNombre($nombre)
+    {
         $db = Database::getConnection();
         $stmt = $db->prepare('SELECT * FROM hashtags WHERE nombre = :nombre');
         $stmt->bindValue(':nombre', $nombre, SQLITE3_TEXT);
@@ -33,7 +38,8 @@ class Hashtag {
     }
 
     // ------------------- Obtener todas las gangas asociadas a este hashtag -------------------
-    public function getGangas() {
+    public function getGangas()
+    {
         $db = Database::getConnection();
         $stmt = $db->prepare('
             SELECT g.* 
@@ -53,12 +59,12 @@ class Hashtag {
     }
 
     // ------------------- Filtrar gangas por nombre de categoría -------------------
-    public static function getGangasByNombre($nombre) {
+    public static function getGangasByNombre($nombre)
+    {
         // Primero buscamos el hashtag por su nombre
         $hashtag = self::getByNombre($nombre);
-        
+
         // Si el hashtag existe, devolvemos sus gangas
         return $hashtag ? $hashtag->getGangas() : [];
     }
 }
-?>
