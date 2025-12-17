@@ -45,7 +45,7 @@ class GangaController
         require_once './view/filtrado_gangas.php';
     }
 
-    public static function like()
+    public static function like(): never
     {
         if (!isset($_SESSION['user_id'], $_GET['ganga_id'])) {
             header('Location: index.php?action=login');
