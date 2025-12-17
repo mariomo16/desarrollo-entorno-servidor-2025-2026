@@ -1,24 +1,3 @@
-<?php
-require_once 'Database.php';
-require_once 'Ganga.php';
-require_once 'User.php';
-
-session_start();
-
-new Database();
-// Conectar a la base de datos
-$db = Database::getConnection();
-
-// Si no hay sesión, redirigir al login
-if (!isset($_SESSION['user_nickname'])) {
-    header('Location: login.php');
-    exit;
-}
-
-$user = User::getById($_SESSION['user_id']);
-
-$gangas = Ganga::getAll();
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,9 +10,7 @@ $gangas = Ganga::getAll();
     <div style="display: flex; justify-content: space-between;">
 
         <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['user_nickname']); ?></h1>
-
-        <p><a href="login.php">Cerrar sesión</a></p>
-
+        <p><a href="index.php?action=login">Cerrar sesión</a></p>
     </div>
 
     <section>
@@ -48,14 +25,14 @@ $gangas = Ganga::getAll();
                 <p>Precio: €<?php echo number_format($ganga->getPrecio(), 2); ?></p>
                 <span>(<?= $ganga->countLikes() ?>)</span>
 
-                <a href="like.php?ganga_id=<?= $ganga->getId() ?>">
+                <a href="index.php?action=like&ganga_id=<?= $ganga->getId() ?>">
                     <img src="./img/<?= $hasLiked ? 'down.png' : 'up.png' ?>" alt="like" width="15" style="cursor:pointer;">
                 </a>
 
 
                 <div class="hashtags">
                     <?php foreach ($ganga->getHashtags() as $hashtag): ?>
-                        <a href="filtrado_gangas.php?categoria=<?= urlencode($hashtag) ?>">
+                        <a href="index.php?action=filtrado_gangas&categoria=<?= urlencode($hashtag) ?>">
                             #<?= htmlspecialchars($hashtag) ?>
                         </a>
                     <?php endforeach; ?>

@@ -1,33 +1,3 @@
-<?php
-require_once 'Database.php';
-require_once 'User.php';
-
-session_start();
-
-// Inicializar BD
-new Database();
-
-$error = null;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    $user = User::login($email, $password);
-
-    if ($user) {
-        // Guardar usuario en sesión
-        $_SESSION['user_id'] = $user->getId();
-        $_SESSION['user_nickname'] = $user->getNickname();
-
-        // Redirigir al listado de gangas
-        header('Location: listado_gangas.php');
-        exit;
-    } else {
-        $error = 'Email o contraseña incorrectos';
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -53,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <input type="submit" value="Iniciar sesión">
             <br><br>
-            <a href="register.php">O regístrate aquí</a>
+            <a href="index.php?action=register">O regístrate aquí</a>
         </form>
     </section>
 </body>
