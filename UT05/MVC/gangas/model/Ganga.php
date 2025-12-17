@@ -102,5 +102,4 @@ class Ganga
 
         return $row['total'] ?? 0;
     }
-
 }

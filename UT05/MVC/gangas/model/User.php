@@ -117,5 +117,4 @@ class User
         $stmt->bindValue(':ganga_id', $ganga_id, SQLITE3_INTEGER);
         $stmt->execute();
     }
-
 }
