@@ -4,14 +4,13 @@ $action = $_GET['action'] ?? 'listado_gangas';
 
 require_once 'Database.php';
 require_once 'User.php';
+session_start();
+new Database();
 
 switch ($action) {
     case 'listado_gangas':
         require_once 'Ganga.php';
 
-        session_start();
-
-        new Database();
         // Conectar a la base de datos
         $db = Database::getConnection();
 
@@ -28,11 +27,6 @@ switch ($action) {
 
     case 'filtrado_gangas':
         require_once 'Hashtag.php';
-
-        session_start();
-
-        // Inicializar base de datos
-        new Database();
 
         $db = Database::getConnection();
         // Si no hay sesión, redirigir al login
@@ -54,9 +48,6 @@ switch ($action) {
         break;
 
     case 'like':
-        session_start();
-        new Database();
-
         if (!isset($_SESSION['user_id'], $_GET['ganga_id'])) {
             header('Location: index.php?action=login');
             exit;
@@ -78,11 +69,6 @@ switch ($action) {
         break;
 
     case 'login':
-        session_start();
-
-        // Inicializar BD
-        new Database();
-
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -107,9 +93,6 @@ switch ($action) {
         break;
 
     case 'register':
-        session_start();
-        new Database();
-
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
