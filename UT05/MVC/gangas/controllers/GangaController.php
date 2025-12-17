@@ -12,6 +12,7 @@ class GangaController
         // Si no hay sesión, redirigir al login
         if (!isset($_SESSION['user_nickname'])) {
             header('Location: index.php?action=login');
+            exit;
         }
 
         $user = User::getById($_SESSION['user_id']);
@@ -28,6 +29,7 @@ class GangaController
         // Si no hay sesión, redirigir al login
         if (!isset($_SESSION['user_nickname'])) {
             header('Location: index.php?action=login');
+            exit;
         }
 
         // Verificar si hay filtro de categoría
@@ -63,5 +65,6 @@ class GangaController
         // Volver a la página anterior (listado o filtrado)
         $redirect = $_SERVER['HTTP_REFERER'] ?? 'index.php?action=listado_gangas';
         header("Location: $redirect");
+        exit;
     }
 }
