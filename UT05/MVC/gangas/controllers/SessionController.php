@@ -4,6 +4,10 @@ class SessionController
 {
     public static function login(): void
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            session_unset();
+            session_destroy();
+        }
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

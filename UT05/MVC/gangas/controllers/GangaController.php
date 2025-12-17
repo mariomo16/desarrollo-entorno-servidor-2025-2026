@@ -6,9 +6,6 @@ class GangaController
     {
         require_once './model/Ganga.php';
 
-        // Conectar a la base de datos
-        $db = Database::getConnection();
-
         // Si no hay sesión, redirigir al login
         if (!isset($_SESSION['user_nickname'])) {
             header('Location: index.php?action=login');
@@ -25,8 +22,6 @@ class GangaController
     {
         require_once './model/Hashtag.php';
 
-        $db = Database::getConnection();
-        // Si no hay sesión, redirigir al login
         if (!isset($_SESSION['user_nickname'])) {
             header('Location: index.php?action=login');
             exit;
