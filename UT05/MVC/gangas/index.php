@@ -8,7 +8,6 @@ new Database();
 
 require_once './controllers/SessionController.php';
 require_once './controllers/GangaController.php';
-require_once './controllers/LikeController.php';
 
 $action = $_GET['action'] ?? 'listado_gangas';
 
