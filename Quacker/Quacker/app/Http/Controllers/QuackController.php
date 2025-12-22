@@ -63,6 +63,8 @@ class QuackController extends Controller
      */
     public function edit(Quack $quack)
     {
+        $this->authorize('manage', $quack);
+
         return view('quacks.edit', [
             'quack' => $quack
         ]);
@@ -73,6 +75,8 @@ class QuackController extends Controller
      */
     public function update(Request $request, Quack $quack)
     {
+        $this->authorize('manage', $quack);
+
         $request->validate(
             [
                 'content' => 'required|max:280'
@@ -90,9 +94,11 @@ class QuackController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Quack $quack)
     {
-        Quack::destroy($id);
+        $this->authorize('manage', $quack);
+
+        $quack->delete();
         return redirect('/quacks');
     }
 }
