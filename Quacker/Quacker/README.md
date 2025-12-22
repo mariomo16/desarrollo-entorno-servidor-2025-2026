@@ -16,49 +16,10 @@ Contraseña: **Admin123**
 
 ## Instalación
 
-### Clonar el repositorio
+### Preparar el proyecto, compilar assets e iniciar el servidor de desarrollo
 
 ```bash
-git clone https://github.com/mariomo16/Quacker.git && cd Quacker
+composer run setup && php artisan serve
 ```
-
-### Preparar el proyecto y compilar assets
-
-```bash
-composer run setup
-```
-
-> [!NOTE]
-> Este script prepara el proyecto por primera vez: instala dependencias de PHP y Node.js, copia el archivo `.env`, genera la key de Laravel, ejecuta migraciones y seeders de la base de datos, y compila los assets.
-
-### Iniciar el servidor de desarrollo
-
-```bash
-php artisan serve
-```
-
-> [!WARNING]
-> Para desarrollo activo con compilación de assets, se recomienda usar:
->
-> ```bash
-> composer run dev:linux || composer run dev
-> ```
 
 La aplicación estará disponible en `http://127.0.0.1:8000/`
-
-## Gestión de base de datos
-
-Puedes visualizar la base de datos SQLite (`database/database.sqlite`) con:
-
--   [DBeaver](https://dbeaver.io) (gratuito, multiplataforma)
--   [DB Browser for SQLite](https://sqlitebrowser.org) (gratuito, específico SQLite)
--   [TablePlus](https://tableplus.com) (freemium, interfaz moderna)
-
-## Referencias
-
--   [Laravel : Carbon shorten diffForHumans()](https://stackoverflow.com/questions/52371097/laravel-carbon-shorten-diffforhumans)
--   [laravel/docs/12.x/validation#rule-unique](https://laravel.com/docs/12.x/validation#rule-unique)
-
-## Equipo de Desarrollo
-
-Desarrollado por [@mariomo16](https://github.com/mariomo16), [@alfonsogomez45](https://github.com/alfonsogomez45) y [@ByAlberto](https://github.com/ByAlberto)
