@@ -11,215 +11,291 @@
 }
 
 :root {
-	/* Twitter/X */
-	--color-primary: #1da1f2;
+	/* Primarios */
+	--color-primary: hsl(203, 89%, 53%);
+	--color-primary-hover: hsl(204, 79%, 47%);
+	--color-danger: hsl(356, 91%, 54%);
+	--color-danger-hover: hsl(357, 76%, 49%);
 
 	/* Fondos */
-	--color-background: #15202b;
-	--color-background-hover: #1c2731;
+	--bg-primary: hsl(210, 34%, 13%);
+	--bg-secondary: hsl(209, 27%, 15%);
 
 	/* Bordes */
-	--color-border: #38444d;
+	--border: hsl(206, 16%, 30%);
 
 	/* Texto */
-	--color-text-primary: #f7f9f9;
-	--color-text-secondary: #8b98a5;
-	--color-text-inverse: #0f1419;
+	--text-primary: hsl(180, 14%, 97%);
+	--text-secondary: hsl(210, 13%, 65%);
+	--text-inverse: hsl(210, 25%, 8%);
 
 	/* Botones */
-	--color-btn-hover: #2a353f;
-	--color-btn-light: #eff3f4;
-	--color-btn-light-hover: #d7dbdc;
-	--color-btn-danger: #f4212e;
-	--color-btn-danger-hover: #dc1e29;
+	--button-hover: hsl(209, 20%, 21%);
+	--button-light: hsl(192, 19%, 95%);
+	--button-light-hover: hsl(192, 7%, 85%);
+
+	/* Otros */
+	--nomeacuerdoparaqueeraeste: hsl(204, 7%, 47%);
 }
 
 body {
-	background-color: var(--color-background);
-	color: var(--color-text-primary);
-	font-family: "Segoe UI", sans-serif;
-	font-size: 15px;
 	margin: 0;
 	padding: 0;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 15px;
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
 }
 
 nav.nav-menu {
 	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 999;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	top: 20px;
-	left: 20px;
+	gap: 16px;
 }
 
 nav.nav-menu a {
-    display: block;
-    margin: auto;
 	padding: 10px;
 	border-radius: 50%;
-	cursor: pointer;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
 	transition: all 0.2s ease;
 }
 
 nav.nav-menu a:hover {
-    color: var(--color-primary);
-	background-color: var(--color-btn-hover);
+	color: var(--color-primary);
+	box-shadow: 0 0 8px hsla(203, 89%, 53%, 0.8);
 	transform: scale(1.1);
+}
+
+nav.nav-menu a svg {
+	width: 44px;
+	height: 44px;
 }
 
 main {
 	width: 600px;
 	margin: 0 auto;
 	padding: 0;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
 }
 
-article {
-	margin: 0;
+article.index,
+article.show {
 	padding: 12px 16px;
+	border: 1px solid var(--border);
 	line-height: 20px;
-	border: 1px solid var(--color-border);
+}
+
+article.index {
+	margin: 0;
+	border-top: none;
 	transition: all 0.2s ease;
 }
 
 article.show {
+	display: grid;
+	justify-items: center;
+	height: fit-content;
 	margin: 30% 0;
-    height: fit-content;
-	padding: 12px 16px;
-	line-height: 20px;
-    text-align: center;
 	border-radius: 10px;
-    justify-items: center;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	text-align: center;
 }
 
-span.text-muted {
-	color: var(--color-text-secondary);
+.text-muted {
+	color: var(--text-secondary);
 }
 
-div.resource-actions {
+div.resource-actions,
+div.form-actions {
+	display: flex;
+	gap: 0.5rem;
 	margin-top: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    gap: 0.5rem;
-}
-
-div.resource-actions--end {
-    justify-content: flex-end;
 }
 
 div.resource-actions a,
-div.resource-actions button {
-	border: 1px solid var(--color-border);
-	border-radius: 50px;
+div.resource-actions button,
+div.form-actions a,
+div.form-actions button {
 	padding: 6px 16px;
+	border: 1px solid var(--border);
+	border-radius: 50px;
 	transition: all 0.2s ease;
 }
 
-div.resource-actions .btn-delete {
-	color: var(--color-btn-danger);
+div.resource-actions {
+	justify-content: flex-start;
 }
 
-div.resource-actions .btn-save:hover {
-    color: var(--color-text-inverse);
-    background-color: var(--color-text-primary);
+div.resource-actions button {
+	color: var(--color-danger);
+	cursor: pointer;
 }
 
-div.resource-actions .btn-cancel:hover {
-    background-color: var(--color-background-hover);
+div.resource-actions button:hover {
+	color: var(--text-primary);
+	background-color: var(--color-danger-hover);
 }
 
 div.resource-actions a:hover {
 	background-color: var(--color-primary);
 }
 
-div.resource-actions button:hover {
+div.form-actions {
+	justify-content: flex-end;
+}
+
+div.form-actions button {
 	cursor: pointer;
 }
 
-div.resource-actions .btn-delete:hover {
-	background-color: var(--color-btn-danger-hover);
-    color: var(--color-text-primary);
+div.form-actions button:hover {
+	background-color: var(--color-primary);
 }
 
-div.resource-actions .cancel:hover {
-	background-color: var(--color-background-hover);
+div.form-actions a:hover {
+	color: var(--text-primary);
+	background-color: var(--color-danger);
 }
 
 form.resource-form {
-    margin: 30% 0;
-    height: fit-content;
+	margin: 10vh auto 0;
+	padding: 24px;
+	background-color: var(--bg-secondary);
+	border-radius: 12px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+}
+
+form.auth-form,
+form.resource-form {
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	gap: 10px;
+	height: fit-content;
+	margin: 10vh auto 0;
 	padding: 12px 16px;
-    border: 1px solid var(--color-border);
-	border-radius: 10px;
+	background-color: var(--bg-secondary);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
 	line-height: 20px;
-    justify-items: center;
-    display: flex;
-    flex-direction: column;
 }
 
-form label {
-    font-size: large;
-}
-
-form input {
-    width: 100%;
-    margin-top: 0.4rem;
-    margin-bottom: 1rem;
-    font-size: x-large;
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
-    padding: 10px;
-    outline: none;
-    transition: all 0.4s ease;
-}
-
-form input:focus {
-    border: 1px solid var(--color-primary);
-}
-
-form textarea {
-    display: inline-block;
-    height: 200px;
-    margin-top: 0.4rem;
-    font-size: large;
-    border: 1px solid var(--color-border);
-    overflow: hidden;
-    border-radius: 5px;
-    padding: 10px;
-    outline: none;
-    transition: all 0.4s ease;
-}
-
-form textarea:focus {
-    border: 1px solid var(--color-primary);
-}
-
-p.error-message {
-    float: inline-end;
-    color: var(--color-btn-danger);
-}
-
-button.btn-login {
+form.auth-form button {
+	margin-top: 0.4rem;
 	padding: 12px 16px;
-	margin-top: 20px;
 	background-color: var(--color-primary);
-	border: 1px solid var(--color-border);
+	border: 1px solid var(--border);
 	border-radius: 50px;
+	cursor: pointer;
 	transition: all 0.2s ease;
 }
 
-button.btn-login:hover {
-	cursor: pointer;
+form.auth-form button:hover {
 	color: var(--color-primary);
-	background-color: var(--color-btn-light-hover);
+	background-color: var(--button-light-hover);
+}
+
+form.auth-form a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+form.auth-form a:hover {
+	color: var(--color-primary-hover);
+}
+
+form label {
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--text-primary);
+	display: block;
+}
+
+form input {
+	margin: 0.2rem 0;
+	background-color: var(--bg-primary);
+	width: 100%;
+	font-size: x-large;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	padding: 10px;
+	outline: none;
+	transition: all 0.4s ease;
+	font-weight: 300;
+}
+
+form input:focus {
+	border: 1px solid var(--color-primary);
+}
+
+form textarea {
+	display: inline-block;
+	height: 200px;
+	font-size: large;
+	border: 1px solid var(--border);
+	overflow: hidden;
+	border-radius: 5px;
+	padding: 10px;
+	outline: none;
+	transition: all 0.4s ease;
+	background-color: var(--bg-primary);
+	resize: none;
+}
+
+form textarea:focus {
+	border: 1px solid var(--color-primary);
+}
+
+p.error-message {
+	float: inline-end;
+	color: var(--color-danger);
 }
 
 footer {
 	position: fixed;
-	bottom: 0;
-	margin-bottom: 10px;
+	bottom: 10px;
+	left: 0;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	text-align: center;
+	align-items: center;
+	gap: 0;
 	font-size: large;
+}
+
+div.auth-widget {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 16px;
+	padding: 12px 18px;
+	background: var(--bg-secondary);
+	border-radius: 12px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	color: var(--text-primary);
+}
+
+div.auth-widget p span.auth-widget-username {
+	color: var(--text-secondary);
+	opacity: 0.7;
+}
+
+div.auth-widget form button.auth-widget-logout-btn {
+	color: var(--color-primary);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+div.auth-widget form button.auth-widget-logout-btn:hover {
+	color: var(--color-primary-hover);
 }

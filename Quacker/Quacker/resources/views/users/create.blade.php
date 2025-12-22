@@ -17,7 +17,7 @@
                 @error('display_name')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="text" name="display_name" placeholder="usuario_quacker" value="{{ old('display_name') }}"
+                <input type="text" name="display_name" placeholder="Usuario Quacker" value="{{ old('display_name') }}"
                     required>
             </label>
             <label>
@@ -25,7 +25,7 @@
                 @error('username')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="text" name="username" placeholder="Usuario Quacker" value="{{ old('username') }}"
+                <input type="text" name="username" placeholder="usuario_quacker" value="{{ old('username') }}"
                     required>
             </label>
             <label>
@@ -43,9 +43,9 @@
                 @enderror
                 <input type="password" name="password" placeholder="P@ssw0rd" required>
             </label>
-            <div class="resource-actions resource-actions--end">
-                <a href="/users" class="btn-cancel">Cancelar</a>
-                <button class="btn-save">Crear usuario</button>
+            <div class="form-actions">
+                <a href="/users">Cancelar</a>
+                <button type="submit">Crear usuario</button>
             </div>
         </form>
     </main>

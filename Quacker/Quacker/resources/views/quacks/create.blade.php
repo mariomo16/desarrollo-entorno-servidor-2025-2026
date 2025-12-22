@@ -13,22 +13,15 @@
         <form method="POST" action="/quacks" class="resource-form">
             @csrf
             <label>
-                <span class="text-muted">ID Usuario</span>
-                @error('content')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-                <input type="number" name="user_id">
-            </label>
-            <label>
                 <span class="text-muted">Quack, quack, ¿qué pasa?</span>
                 @error('content')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </label>
             <textarea name="content" required>{{ old('content') }}</textarea>
-            <div class="resource-actions resource-actions--end">
-                <a href="/quacks" class="btn-cancel">Cancelar</a>
-                <button class="btn-save">Crear quack</button>
+            <div class="form-actions">
+                <a href="/quacks">Cancelar</a>
+                <button type="submit">Crear quack</button>
             </div>
         </form>
     </main>

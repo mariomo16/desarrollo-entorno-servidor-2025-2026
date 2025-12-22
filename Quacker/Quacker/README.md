@@ -9,6 +9,11 @@
 [![Release](https://img.shields.io/github/v/release/mariomo16/Quacker)](https://github.com/mariomo16/Quacker/releases)
 [![Last Commit](https://img.shields.io/github/last-commit/mariomo16/Quacker)](https://github.com/mariomo16/Quacker/commits/main)
 
+## Usuario para pruebas
+
+Correo electrónico: **admin@quacker.es**\
+Contraseña: **Admin123**
+
 ## Instalación
 
 ### Clonar el repositorio
