@@ -31,5 +31,12 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('Admin123'),
         ]);
+
+        // Quack de prueba para desarrollo
+        Quack::factory()->create([
+            'content' => 'Solo puedo editar y eliminar mis quacks!',
+            'user_id' => '51',
+            'created_at' => now()->addSeconds(1) // Para que aparezca como el mas reciente
+        ]);
     }
 }
