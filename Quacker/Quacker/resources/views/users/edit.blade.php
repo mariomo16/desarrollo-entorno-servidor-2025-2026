@@ -10,7 +10,7 @@
 
 <body>
     <main>
-        <form method="POST" action="/users/{{ $user->id }}" class="resource-form">
+        <form method="POST" action="{{ route('users.update', $user) }}" class="resource-form">
             @csrf
             @method('PATCH')
             <label>
@@ -18,35 +18,35 @@
                 @error('display_name')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="text" name="display_name" placeholder="Usuario Quacker" value="{{ $user->display_name }}"
-                    required>
+                <input type="text" name="display_name" value="{{ $user->display_name }}" placeholder="Usuario Quacker"
+                    maxlength="50" required>
             </label>
             <label>
                 <span class="text-muted">Nombre de usuario</span>
                 @error('username')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="text" name="username" placeholder="usuario_quacker" value="{{ $user->username }}"
-                    required>
+                <input type="text" name="username" value="{{ $user->username }}" placeholder="usuario_quacker"
+                    maxlength="15" required>
             </label>
             <label>
                 <span class="text-muted">Correo electrónico</span>
                 @error('email')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="email" name="email" placeholder="usuario@quacker.es" value="{{ $user->email }}"
+                <input type="email" name="email" value="{{ $user->email }}" placeholder="usuario@quacker.es"
                     required>
             </label>
             <label>
-                <span class="text-muted">Correo electrónico</span>
+                <span class="text-muted">Contraseña</span>
                 @error('password')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="password" name="password" placeholder="P@ssw0rd"" required>
+                <input type="password" name="password" placeholder="P@ssw0rd" required>
             </label>
-            <div class="resource-actions resource-actions--end">
-                <a href="/users" class="btn-cancel">Cancelar</a>
-                <button type="submit" class="btn-save">Guardar</button>
+            <div class="form-actions">
+                <a href="{{ route('users.index') }}">Cancelar</a>
+                <button type="submit">Guardar</button>
             </div>
         </form>
     </main>

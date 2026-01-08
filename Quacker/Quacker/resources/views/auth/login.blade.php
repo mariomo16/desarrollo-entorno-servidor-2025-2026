@@ -10,7 +10,7 @@
 
 <body>
     <main>
-        <form method="POST" action="/login" class="resource-form">
+        <form method="POST" action="{{ route('login') }}" class="auth-form">
             @csrf
             <label>
                 <span class="text-muted">Correo electrónico</span>
@@ -26,7 +26,8 @@
                 @enderror
                 <input type="password" name="password" required>
             </label>
-            <button type="submit" class="btn-login">Iniciar sesión</button>
+            <button type="submit">Iniciar sesión</button>
+            <p class="auth-redirect">¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a></p>
         </form>
     </main>
     <footer>

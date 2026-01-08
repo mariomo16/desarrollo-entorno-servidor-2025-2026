@@ -10,7 +10,7 @@
 
 <body>
     <main>
-        <form method="POST" action="/quacks/{{ $quack->id }}" class="resource-form">
+        <form method="POST" action="{{ route('quacks.update', $quack) }}" class="resource-form">
             @csrf
             @method('PATCH')
             <label>
@@ -19,10 +19,10 @@
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </label>
-            <textarea name="content" required>{{ $quack->content }}</textarea>
-            <div class="resource-actions resource-actions--end">
-                <a href="/quacks" class="btn-cancel">Cancelar</a>
-                <button type="submit" class="btn-save">Guardar</button>
+            <textarea name="content" maxlength="280" required>{{ $quack->content }}</textarea>
+            <div class="form-actions">
+                <a href="{{ route('quacks.index') }}">Cancelar</a>
+                <button type="submit">Guardar</button>
             </div>
         </form>
     </main>

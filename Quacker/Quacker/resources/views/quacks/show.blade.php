@@ -11,18 +11,21 @@
 <body>
     <main>
         <article class="show">
-            <p>{{ $quack->display_name }} <span class="text-muted">{{ '@' }}{{ $quack->display_name }}</span>
+            <p>{{ $quack->user->display_name }} <span
+                    class="text-muted">{{ '@' }}{{ $quack->user->username }}</span>
             </p>
             <p class="quack-content">{{ $quack->content }}</p>
             <p><span class="text-muted">{{ $quack->created_at->isoFormat('h:mm a · D MMM YYYY') }}</span></p>
             <div class="resource-actions">
-                <a href="/quacks">Volver</a>
-                <a href="/quacks/{{ $quack->id }}/edit">Editar</a>
-                <form method="POST" action="/quacks/{{ $quack->id }}">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn-delete">Eliminar</button>
-                </form>
+                <a href="{{ route('quacks.index') }}">Volver</a>
+                @can('manage', $quack)
+                    <a href="{{ route('quacks.edit', $quack) }}">Editar</a>
+                    <form method="POST" action="{{ route('quacks.destroy', $quack) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn-delete">Eliminar</button>
+                    </form>
+                @endcan
             </div>
         </article>
     </main>
