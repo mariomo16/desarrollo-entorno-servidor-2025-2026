@@ -1,0 +1,564 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+	--font-sans:
+		"Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+:root {
+	/* Primarios */
+	--color-primary: hsl(210, 70%, 58%);
+	--color-primary-hover: hsl(210, 70%, 52%);
+	/*
+	--color-primary: hsl(203, 89%, 53%);
+	--color-primary-hover: hsl(204, 79%, 47%);
+    */
+	--color-danger: hsl(356, 91%, 54%);
+	--color-danger-hover: hsl(357, 76%, 49%);
+
+	/* Fondos */
+	--bg-primary: hsl(220, 18%, 10%);
+	--bg-secondary: hsl(220, 16%, 14%);
+	--bg-tertiary: hsl(220, 14%, 18%);
+	/*
+	--bg-primary: hsl(210, 34%, 13%);
+	--bg-secondary: hsl(209, 27%, 15%);
+    */
+
+	/* Bordes */
+	--border: hsl(220, 14%, 22%);
+	/*--border: hsl(206, 16%, 30%);*/
+
+	/* Texto */
+	--text-primary: hsl(220, 20%, 92%);
+	--text-secondary: hsl(220, 12%, 65%);
+	/*
+	--text-primary: hsl(180, 14%, 97%);
+	--text-secondary: hsl(210, 13%, 65%);
+    */
+	--text-inverse: hsl(210, 25%, 8%);
+
+	/* Botones */
+	--button-bg: hsl(210, 70%, 58%);
+	--button-hover: hsl(210, 70%, 52%);
+	/*
+	--button-hover: hsl(209, 20%, 21%);
+	--button-light: hsl(192, 19%, 95%);
+	--button-light-hover: hsl(192, 7%, 85%);
+    */
+
+	--focus-ring: hsla(210, 70%, 58%, 0.35);
+
+	/* Acento principal (azul-gris elegante) */
+	--accent: hsl(215, 65%, 60%);
+	--accent-hover: hsl(215, 65%, 54%);
+
+	/* Fondos */
+	--bg-app: hsl(220, 18%, 8%);
+	--bg-card: hsl(220, 16%, 13%);
+	--bg-input: hsl(220, 14%, 17%);
+
+	/* Bordes */
+	--border-soft: hsl(220, 14%, 22%);
+
+	/* Texto */
+	--text-main: hsl(220, 20%, 92%);
+	--text-muted: hsl(220, 12%, 65%);
+
+	/* Estados */
+	--focus: hsla(215, 65%, 60%, 0.35);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 15px;
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
+}
+
+nav.nav-menu {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+main {
+	width: 600px;
+	margin: 0 auto;
+	padding: 0;
+	/*box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);*/
+}
+
+article.index,
+article.show {
+	padding: 12px 16px;
+	border: 1px solid var(--border);
+	line-height: 20px;
+}
+
+article.index {
+	padding: 18px 20px;
+	border-bottom: 1px solid var(--border-soft);
+
+	transition: background 0.2s ease;
+}
+
+article.show {
+	display: grid;
+	justify-items: center;
+	height: fit-content;
+	margin: 30% 0;
+	border-radius: 10px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	text-align: center;
+}
+
+.text-muted {
+	color: var(--text-secondary);
+}
+
+div.resource-actions,
+div.form-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+div.form-actions a,
+div.form-actions button {
+	padding: 6px 16px;
+	border: 1px solid var(--border);
+	border-radius: 50px;
+	transition: all 0.2s ease;
+}
+
+div.resource-actions {
+	justify-content: flex-start;
+}
+
+div.form-actions {
+	justify-content: flex-end;
+}
+
+div.form-actions button {
+	cursor: pointer;
+}
+
+div.form-actions button:hover {
+	background-color: var(--color-primary);
+}
+
+div.form-actions a:hover {
+	color: var(--text-primary);
+	background-color: var(--color-danger);
+}
+
+form.resource-form {
+	margin: 10vh auto 0;
+	padding: 24px;
+	background-color: var(--bg-secondary);
+	border-radius: 12px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+}
+
+form.auth-form,
+form.resource-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: fit-content;
+	margin: 10vh auto 0;
+	padding: 12px 16px;
+	background-color: var(--bg-secondary);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	line-height: 20px;
+}
+
+form.auth-form {
+	padding: 24px;
+	background: var(--bg-secondary);
+	border-radius: 16px;
+	box-shadow: 0 10px 30px hsla(0, 0%, 0%, 0.35);
+}
+
+form.auth-form button {
+	margin-top: 0.4rem;
+	padding: 12px 16px;
+	background-color: var(--button-bg);
+	border: 1px solid var(--border);
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+form.auth-form button:hover {
+	color: var(--text-primary);
+	background-color: var(--button-hover);
+}
+
+form.auth-form a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+form.auth-form a:hover {
+	color: var(--color-primary-hover);
+}
+
+form label {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--text-secondary);
+	margin-bottom: 4px;
+}
+
+form input {
+	margin: 0.2rem 0;
+	background-color: var(--bg-primary);
+	width: 100%;
+	font-size: 1.5rem;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	padding: 10px;
+	outline: none;
+	transition: all 0.4s ease;
+	font-weight: 300;
+}
+
+form input:focus {
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+form textarea {
+	display: inline-block;
+	height: 200px;
+	font-size: large;
+	border: 1px solid var(--border);
+	overflow: hidden;
+	border-radius: 5px;
+	padding: 10px;
+	outline: none;
+	transition: all 0.4s ease;
+	background-color: var(--bg-primary);
+	resize: none;
+}
+
+form textarea:focus {
+	border: 1px solid var(--color-primary);
+}
+
+p.error-message {
+	float: inline-end;
+	color: var(--color-danger);
+}
+
+footer {
+	position: fixed;
+	bottom: 10px;
+	left: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0;
+	font-size: large;
+}
+
+.auth-form {
+	width: 100%;
+	max-width: 480px;
+	margin: 12vh auto 6vh;
+	padding: 40px 42px;
+
+	background: var(--bg-card);
+	border-radius: 22px;
+
+	box-shadow: 0 20px 45px hsla(0, 0%, 0%, 0.45);
+
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+}
+
+.auth-form h1 {
+	font-size: 1.75rem;
+	font-weight: 600;
+	color: var(--text-main);
+	margin-bottom: 6px;
+}
+
+.auth-form p {
+	font-size: 0.95rem;
+	color: var(--text-muted);
+}
+
+.auth-form label {
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--text-muted);
+}
+
+.auth-form input {
+	width: 100%;
+	padding: 14px 16px;
+	font-size: 1.05rem;
+
+	background: var(--bg-input);
+	color: var(--text-main);
+
+	border: 1px solid var(--border-soft);
+	border-radius: 14px;
+
+	transition:
+		border-color 0.25s ease,
+		box-shadow 0.25s ease,
+		background 0.25s ease;
+}
+
+.auth-form input::placeholder {
+	color: hsl(220, 10%, 55%);
+}
+
+.auth-form input:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 4px var(--focus);
+	background: hsl(220, 14%, 19%);
+}
+
+.auth-form button {
+	padding: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+
+	border: none;
+	border-radius: 999px;
+
+	background: linear-gradient(180deg, hsl(215, 65%, 62%), hsl(215, 65%, 54%));
+
+	color: white;
+	cursor: pointer;
+
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.auth-form button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 20px hsla(215, 65%, 60%, 0.35);
+}
+
+.auth-form a {
+	color: var(--accent);
+	text-decoration: none;
+	font-size: 0.9rem;
+}
+
+.auth-form a:hover {
+	text-decoration: underline;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: var(--bg-app);
+	color: var(--text-main);
+	font-family:
+		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.auth-form input {
+	width: 100%;
+	padding: 15px 18px;
+	font-size: 1.05rem;
+
+	background: var(--bg-input);
+	color: var(--text-main);
+
+	border: 1px solid var(--border-soft);
+	border-radius: 14px;
+
+	transition:
+		border-color 0.25s ease,
+		box-shadow 0.25s ease,
+		background 0.25s ease;
+}
+
+.auth-form input::placeholder {
+	color: hsl(220, 10%, 55%);
+}
+
+.auth-form input:focus {
+	outline: none;
+	border-color: var(--accent);
+	background: hsl(220, 14%, 19%);
+	box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+.auth-redirect {
+	font-size: 0.9rem;
+	text-align: center;
+	color: var(--text-muted);
+}
+
+.auth-redirect a {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.auth-redirect a:hover {
+	text-decoration: underline;
+}
+
+footer {
+	text-align: center;
+	font-size: 0.85rem;
+	color: var(--text-muted);
+	margin-bottom: 20px;
+}
+
+footer p {
+	margin: 4px 0;
+}
+
+.auth-widget {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	z-index: 999;
+
+	display: flex;
+	align-items: center;
+	gap: 16px;
+
+	padding: 14px 18px;
+	background: var(--bg-card);
+	border-radius: 16px;
+
+	box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.45);
+
+	color: var(--text-main);
+	backdrop-filter: blur(6px);
+}
+.auth-widget p {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.4;
+}
+
+.auth-widget-username {
+	color: var(--text-muted);
+	font-weight: 400;
+	margin-left: 4px;
+}
+
+.auth-widget-logout-btn {
+	background: transparent;
+	border: 1px solid var(--border-soft);
+	border-radius: 999px;
+
+	padding: 6px 12px;
+	font-size: 0.85rem;
+
+	color: var(--text-muted);
+	cursor: pointer;
+
+	transition:
+		background 0.2s ease,
+		color 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.auth-widget-logout-btn:hover {
+	background: hsla(0, 0%, 100%, 0.04);
+	color: var(--text-main);
+	border-color: var(--accent);
+}
+
+.nav-menu a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 12px;
+	border-radius: 16px;
+
+	color: var(--text-muted);
+	background: transparent;
+
+	border: 1px solid var(--border-soft);
+
+	transition:
+		color 0.2s ease,
+		background 0.2s ease,
+		transform 0.2s ease;
+}
+
+.nav-menu a:hover {
+	color: var(--accent);
+	background: hsla(215, 60%, 60%, 0.08);
+	transform: translateY(-1px);
+}
+
+.nav-menu a svg {
+	width: 42px;
+	height: 42px;
+}
+
+.resource-actions a {
+	padding: 6px 12px;
+	border-radius: 999px;
+
+	font-size: 0.85rem;
+	font-weight: 500;
+
+	color: var(--text-muted);
+	text-decoration: none;
+
+	transition:
+		color 0.2s ease,
+		background 0.2s ease;
+}
+
+.resource-actions a:hover {
+	color: var(--accent);
+	background: hsla(215, 60%, 60%, 0.1);
+}
+
+.resource-actions button {
+	background: transparent;
+	border: none;
+
+	padding: 6px 12px;
+	border-radius: 999px;
+
+	font-size: 0.85rem;
+	color: hsl(355, 70%, 65%);
+	cursor: pointer;
+
+	transition:
+		color 0.2s ease,
+		background 0.2s ease;
+}
+
+.resource-actions button:hover {
+	color: white;
+	background: hsl(355, 70%, 55%);
+}
