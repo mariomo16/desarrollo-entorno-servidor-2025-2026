@@ -1,7 +1,6 @@
 {{-- https://laravel.com/docs/12.x/blade#anonymous-components --}}
 <div class="auth-user-profile">
-
-    <div class="auth-user-avatar">{{ Str::of(auth()->user()->display_name)->substr(0, 1) }}</div>
+    <div class="auth-user-avatar unselectable">{{ Str::of(auth()->user()->display_name)->substr(0, 1) }}</div>
 
     <div class="auth-user-info">
         <strong>{{ auth()->user()->display_name }}</strong>
