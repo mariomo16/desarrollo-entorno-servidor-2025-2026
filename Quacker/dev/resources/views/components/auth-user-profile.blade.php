@@ -1,5 +1,6 @@
 {{-- https://laravel.com/docs/12.x/blade#anonymous-components --}}
 <div class="auth-user-profile">
+    {{-- https://laravel.com/docs/12.x/strings#method-fluent-str-substr --}}
     <div class="auth-user-avatar unselectable">{{ Str::of(auth()->user()->display_name)->substr(0, 1) }}</div>
 
     <div class="auth-user-info">
