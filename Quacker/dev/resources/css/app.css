@@ -13,9 +13,9 @@
 
 :root {
 	/* Fondos */
-	--bg-main: hsl(0, 0%, 2%);
-	--bg-secondary: hsl(0, 0%, 4%);
-	--bg-tertiary: hsl(0, 0%, 6%);
+	--bg-main: hsl(210, 34%, 13%);
+	--bg-secondary: hsl(210, 34%, 13%);
+	--bg-tertiary: hsl(209, 27%, 15%);
 
 	/* Acentos */
 	--accent: hsl(210, 100%, 58%);
@@ -26,11 +26,11 @@
 
 	/* Texto */
 	--text-main: hsl(0, 0%, 96%);
-	--text-muted: hsl(0, 0%, 65%);
+	--text-muted: hsl(210, 13%, 65%);
 
 	/* Bordes */
-	--border-soft: hsl(0, 0%, 10%);
-	--border-strong: hsl(0, 0%, 16%);
+	--border-soft: hsl(206, 16%, 22%);
+	--border-strong: hsl(206, 16%, 30%);
 }
 
 body {
