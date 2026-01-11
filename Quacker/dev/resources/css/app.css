@@ -14,19 +14,19 @@
 :root {
 	/* Fondos */
 	--bg-main: hsl(0, 0%, 2%);
-	--bg-secondary: hsl(0, 0%, 5%);
-	--bg-tertiary: hsl(0, 0%, 5%);
+	--bg-secondary: hsl(0, 0%, 4%);
+	--bg-tertiary: hsl(0, 0%, 6%);
 
 	/* Acentos */
-	--accent: hsl(210, 100%, 55%);
-	--accent-hover: hsl(210, 100%, 45%);
+	--accent: hsl(210, 100%, 58%);
+	--accent-hover: hsl(210, 100%, 50%);
 
-	--danger: hsl(0, 85%, 60%);
+	--danger: hsl(0, 85%, 58%);
 	--danger-hover: hsl(0, 85%, 50%);
 
 	/* Texto */
-	--text-main: hsl(0, 0%, 94%);
-	--text-muted: hsl(0, 0%, 60%);
+	--text-main: hsl(0, 0%, 96%);
+	--text-muted: hsl(0, 0%, 65%);
 
 	/* Bordes */
 	--border-soft: hsl(0, 0%, 10%);
@@ -36,10 +36,27 @@
 body {
 	margin: 0;
 	padding: 0;
+	overflow-y: scroll;
+
 	font-family: "Segoe UI", sans-serif;
 	font-size: 15px;
+
 	color: var(--text-main);
 	background-color: var(--bg-main);
+}
+
+.text-muted {
+	color: var(--text-muted);
+}
+
+.unselectable {
+	user-select: none;
+}
+
+.error-message {
+	float: inline-end;
+
+	color: var(--danger);
 }
 
 .auth-user-profile {
@@ -55,8 +72,8 @@ body {
 
 	padding: 12px 18px;
 	background: var(--bg-tertiary);
+	border: 1px solid var(--border-soft);
 	border-radius: 12px;
-	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
 
 	color: var(--text-main);
 	font-family: sans-serif;
@@ -100,7 +117,7 @@ body {
 }
 
 .auth-user-logout-btn:hover .auth-user-logout-icon {
-	color: var(--danger-hover);
+	color: var(--danger);
 }
 
 .sidebar-nav {
@@ -108,45 +125,55 @@ body {
 	top: 16px;
 	left: 16px;
 	z-index: 999;
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
+
+	display: grid;
+	gap: 10px;
 }
 
 .sidebar-nav a {
 	padding: 10px;
+	border: 1px solid var(--border-soft);
 	border-radius: 12px;
-	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
-	transition: all 0.2s ease;
+
+	color: var(--text-muted);
 	background-color: var(--bg-tertiary);
+
+	transition: all 0.2s ease;
 }
 
 .sidebar-nav a:hover {
-	color: var(--accent);
-	box-shadow: 0 0 8px hsla(203, 89%, 53%, 0.8);
+	border: 1px solid var(--border-strong);
+}
+
+.sidebar-nav a:hover svg {
+	color: var(--text-main);
 	transform: scale(1.1);
 }
 
-.sidebar-nav a svg {
-	width: 44px;
-	height: 44px;
+.sidebar-nav a.active-route svg,
+.sidebar-nav a.active-route:hover svg {
+	color: var(--accent);
 }
 
-.sidebar-nav a.active-route {
-	color: var(--accent);
+.sidebar-nav a svg {
+	display: block;
+	width: 44px;
+	height: 44px;
+	color: currentColor;
+	transition: all 0.2s ease;
 }
 
 main {
 	width: 600px;
 	margin: 0 auto;
 	padding: 0;
-	box-shadow: 0 0 16px var(--shadow-main);
 }
 
 article.index,
 article.show {
 	padding: 12px 16px;
 	border: 1px solid var(--border-strong);
+
 	line-height: 20px;
 	background-color: var(--bg-secondary);
 }
@@ -161,66 +188,68 @@ article.show {
 	display: grid;
 	justify-items: center;
 	height: fit-content;
-	margin: 30% 0;
-	border-radius: 10px;
-	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	margin: 16px 0;
+
 	text-align: center;
+	border-radius: 12px;
 }
 
-.text-muted {
-	color: var(--text-muted);
-}
-
-div.resource-actions,
-div.form-actions {
+.resource-actions,
+.form-actions {
 	display: flex;
 	gap: 0.5rem;
 	margin-top: 1rem;
 }
 
-div.resource-actions a,
-div.resource-actions button,
-div.form-actions a,
-div.form-actions button {
+.resource-actions {
+	justify-content: start;
+}
+
+.form-actions {
+	justify-content: end;
+}
+
+.resource-actions a,
+.resource-actions button,
+.form-actions a,
+.form-actions button {
 	padding: 6px 16px;
 	border: 1px solid var(--border-soft);
-	border-radius: 50px;
+	border-radius: 999px;
+
+	color: var(--text-muted);
+	background: none;
+	cursor: pointer;
+
 	transition: all 0.2s ease;
 }
 
-div.resource-actions {
-	justify-content: flex-start;
+.resource-actions a:hover {
+	color: var(--text-main);
+	background-color: var(--accent);
+	border-color: var(--accent);
 }
 
-div.resource-actions button {
+.resource-actions button {
 	color: var(--danger);
-	cursor: pointer;
 }
 
-div.resource-actions button:hover {
+.resource-actions button:hover {
 	color: var(--text-main);
 	background-color: var(--danger-hover);
+	border-color: var(--danger-hover);
 }
 
-div.resource-actions a:hover {
+.form-actions button:hover {
+	color: var(--text-main);
 	background-color: var(--accent);
+	border-color: var(--accent);
 }
 
-div.form-actions {
-	justify-content: flex-end;
-}
-
-div.form-actions button {
-	cursor: pointer;
-}
-
-div.form-actions button:hover {
-	background-color: var(--accent);
-}
-
-div.form-actions a:hover {
+.form-actions a:hover {
 	color: var(--text-primary);
 	background-color: var(--danger);
+	border-color: var(--danger);
 }
 
 form.auth-form,
@@ -305,19 +334,18 @@ form textarea:focus {
 	border: 1px solid var(--accent);
 }
 
-p.error-message {
-	float: inline-end;
-	color: var(--danger);
-}
-
 footer {
 	position: fixed;
-	bottom: 10px;
+	bottom: 16px;
 	left: 0;
 	width: 100%;
+	z-index: 999;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 0;
+
 	font-size: large;
+	font-weight: 500;
 }

@@ -24,8 +24,8 @@
     </main>
     @guest
         <footer>
-            <p><span class="text-muted">Correo electrónico: </span>admin@quacker.es</p>
-            <p><span class="text-muted">Contraseña: </span> Admin123</p>
+            <p><span class="text-muted unselectable">Correo electrónico: </span>admin@quacker.es</p>
+            <p><span class="text-muted unselectable">Contraseña: </span> Admin123</p>
         </footer>
     @endguest
 </body>
