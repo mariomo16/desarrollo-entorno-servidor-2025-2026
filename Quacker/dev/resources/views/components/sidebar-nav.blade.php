@@ -1,4 +1,5 @@
 {{-- https://laravel.com/docs/12.x/blade#anonymous-components --}}
+{{-- https://laravel.com/docs/12.x/requests#inspecting-the-request-path --}}
 @props(['route'])
 
 <nav class="nav-menu">
