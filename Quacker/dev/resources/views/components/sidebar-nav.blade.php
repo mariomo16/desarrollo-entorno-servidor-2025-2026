@@ -2,7 +2,7 @@
 {{-- https://laravel.com/docs/12.x/requests#inspecting-the-request-path --}}
 @props(['route'])
 
-<nav class="nav-menu">
+<nav class="sidebar-nav">
     <a href="{{ $route }}"><x-icon.plus /></a>
     <a href="{{ route('users.index') }}"
         class="{{ request()->routeIs('users.*') ? 'active-route' : '' }}"><x-icon.user /></a>

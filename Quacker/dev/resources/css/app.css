@@ -12,29 +12,25 @@
 }
 
 :root {
-	/* Primarios */
-	--color-primary: hsl(203, 89%, 53%);
-	--color-primary-hover: hsl(204, 79%, 47%);
-	--color-danger: hsl(356, 91%, 54%);
-	--color-danger-hover: hsl(357, 76%, 49%);
-
 	/* Fondos */
-	--bg-primary: hsl(210, 34%, 13%);
-	--bg-secondary: hsl(209, 27%, 15%);
+	--bg-main: hsl(0, 0%, 2%);
+	--bg-secondary: hsl(0, 0%, 5%);
+	--bg-tertiary: hsl(0, 0%, 5%);
 
-	/* Bordes */
-	--border: hsl(206, 16%, 30%);
+	/* Acentos */
+	--accent: hsl(210, 100%, 55%);
+	--accent-hover: hsl(210, 100%, 45%);
+
+	--danger: hsl(0, 85%, 60%);
+	--danger-hover: hsl(0, 85%, 50%);
 
 	/* Texto */
-	--text-primary: hsl(180, 14%, 97%);
-	--text-secondary: hsl(210, 13%, 65%);
-	--text-muted: hsl(210, 13%, 65%);
-	--text-inverse: hsl(210, 25%, 8%);
+	--text-main: hsl(0, 0%, 94%);
+	--text-muted: hsl(0, 0%, 60%);
 
-	/* Botones */
-	--button-hover: hsl(209, 20%, 21%);
-	--button-light: hsl(192, 19%, 95%);
-	--button-light-hover: hsl(192, 7%, 85%);
+	/* Bordes */
+	--border-soft: hsl(0, 0%, 10%);
+	--border-strong: hsl(0, 0%, 16%);
 }
 
 body {
@@ -42,11 +38,72 @@ body {
 	padding: 0;
 	font-family: "Segoe UI", sans-serif;
 	font-size: 15px;
-	color: var(--text-primary);
-	background-color: var(--bg-primary);
+	color: var(--text-main);
+	background-color: var(--bg-main);
 }
 
-nav.nav-menu {
+.auth-user-profile {
+	position: fixed;
+	top: 16px;
+	right: 16px;
+	z-index: 999;
+
+	display: grid;
+	grid-auto-flow: column;
+	place-items: center;
+	gap: 10px;
+
+	padding: 12px 18px;
+	background: var(--bg-tertiary);
+	border-radius: 12px;
+	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+
+	color: var(--text-main);
+	font-family: sans-serif;
+}
+
+.auth-user-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+
+	display: grid;
+	place-items: center;
+	background-color: var(--accent);
+
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.auth-user-info {
+	display: grid;
+	justify-items: start;
+	align-content: center;
+}
+
+.auth-user-logout-btn {
+	display: grid;
+	place-items: center;
+
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--text-muted);
+
+	padding: 12px;
+}
+
+.auth-user-logout-icon {
+	width: 25px;
+	height: 25px;
+	transition: all 0.2s ease;
+}
+
+.auth-user-logout-btn:hover .auth-user-logout-icon {
+	color: var(--danger-hover);
+}
+
+.sidebar-nav {
 	position: fixed;
 	top: 16px;
 	left: 16px;
@@ -56,40 +113,42 @@ nav.nav-menu {
 	gap: 16px;
 }
 
-nav.nav-menu a {
+.sidebar-nav a {
 	padding: 10px;
-	border-radius: 50%;
+	border-radius: 12px;
 	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
 	transition: all 0.2s ease;
+	background-color: var(--bg-tertiary);
 }
 
-nav.nav-menu a:hover {
-	color: var(--color-primary);
+.sidebar-nav a:hover {
+	color: var(--accent);
 	box-shadow: 0 0 8px hsla(203, 89%, 53%, 0.8);
 	transform: scale(1.1);
 }
 
-nav.nav-menu a svg {
+.sidebar-nav a svg {
 	width: 44px;
 	height: 44px;
 }
 
-nav.nav-menu a.active-route {
-	color: var(--color-primary);
+.sidebar-nav a.active-route {
+	color: var(--accent);
 }
 
 main {
 	width: 600px;
 	margin: 0 auto;
 	padding: 0;
-	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	box-shadow: 0 0 16px var(--shadow-main);
 }
 
 article.index,
 article.show {
 	padding: 12px 16px;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-strong);
 	line-height: 20px;
+	background-color: var(--bg-secondary);
 }
 
 article.index {
@@ -109,7 +168,7 @@ article.show {
 }
 
 .text-muted {
-	color: var(--text-secondary);
+	color: var(--text-muted);
 }
 
 div.resource-actions,
@@ -124,7 +183,7 @@ div.resource-actions button,
 div.form-actions a,
 div.form-actions button {
 	padding: 6px 16px;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-soft);
 	border-radius: 50px;
 	transition: all 0.2s ease;
 }
@@ -134,17 +193,17 @@ div.resource-actions {
 }
 
 div.resource-actions button {
-	color: var(--color-danger);
+	color: var(--danger);
 	cursor: pointer;
 }
 
 div.resource-actions button:hover {
-	color: var(--text-primary);
-	background-color: var(--color-danger-hover);
+	color: var(--text-main);
+	background-color: var(--danger-hover);
 }
 
 div.resource-actions a:hover {
-	background-color: var(--color-primary);
+	background-color: var(--accent);
 }
 
 div.form-actions {
@@ -156,20 +215,12 @@ div.form-actions button {
 }
 
 div.form-actions button:hover {
-	background-color: var(--color-primary);
+	background-color: var(--accent);
 }
 
 div.form-actions a:hover {
 	color: var(--text-primary);
-	background-color: var(--color-danger);
-}
-
-form.resource-form {
-	margin: 10vh auto 0;
-	padding: 24px;
-	background-color: var(--bg-secondary);
-	border-radius: 12px;
-	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+	background-color: var(--danger);
 }
 
 form.auth-form,
@@ -182,7 +233,7 @@ form.resource-form {
 	margin: 10vh auto 0;
 	padding: 12px 16px;
 	background-color: var(--bg-secondary);
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-soft);
 	border-radius: 12px;
 	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
 	line-height: 20px;
@@ -191,7 +242,7 @@ form.resource-form {
 form.auth-form button {
 	margin-top: 0.4rem;
 	padding: 12px 16px;
-	background-color: var(--color-primary);
+	background-color: var(--accent);
 	border: 1px solid var(--border);
 	border-radius: 50px;
 	cursor: pointer;
@@ -199,33 +250,32 @@ form.auth-form button {
 }
 
 form.auth-form button:hover {
-	color: var(--color-primary);
-	background-color: var(--button-light-hover);
+	background-color: var(--accent-hover);
 }
 
 form.auth-form a {
-	color: var(--color-primary);
+	color: var(--accent);
 	text-decoration: none;
 	transition: all 0.2s ease;
 }
 
 form.auth-form a:hover {
-	color: var(--color-primary-hover);
+	color: var(--accent-hover);
 }
 
 form label {
 	font-size: 1rem;
 	font-weight: 500;
-	color: var(--text-primary);
+	color: var(--text-main);
 	display: block;
 }
 
 form input {
 	margin: 0.2rem 0;
-	background-color: var(--bg-primary);
+	background-color: var(--bg-main);
 	width: 100%;
 	font-size: x-large;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-soft);
 	border-radius: 5px;
 	padding: 10px;
 	outline: none;
@@ -234,30 +284,30 @@ form input {
 }
 
 form input:focus {
-	border: 1px solid var(--color-primary);
+	border: 1px solid var(--accent);
 }
 
 form textarea {
 	display: inline-block;
 	height: 200px;
 	font-size: large;
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-soft);
 	overflow: hidden;
 	border-radius: 5px;
 	padding: 10px;
 	outline: none;
 	transition: all 0.4s ease;
-	background-color: var(--bg-primary);
+	background-color: var(--bg-main);
 	resize: none;
 }
 
 form textarea:focus {
-	border: 1px solid var(--color-primary);
+	border: 1px solid var(--accent);
 }
 
 p.error-message {
 	float: inline-end;
-	color: var(--color-danger);
+	color: var(--danger);
 }
 
 footer {
@@ -270,69 +320,4 @@ footer {
 	align-items: center;
 	gap: 0;
 	font-size: large;
-}
-
-.auth-user-profile {
-	position: fixed;
-	top: 16px;
-	right: 16px;
-	z-index: 999;
-
-	display: grid;
-	grid-auto-flow: column;
-	place-items: center;
-	gap: 10px;
-
-	padding: 12px 18px;
-	background: var(--bg-secondary);
-	border-radius: 12px;
-	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
-
-	color: var(--text-primary);
-	font-family: sans-serif;
-}
-
-.auth-user-avatar {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-
-	display: grid;
-	place-items: center;
-	background-color: var(--color-primary);
-
-	font-size: 1.5rem;
-	font-weight: bold;
-}
-
-.auth-user-info {
-	display: grid;
-	justify-items: start;
-	align-content: center;
-}
-
-.auth-user-logout-btn {
-	display: grid;
-	place-items: center;
-
-	background: none;
-	border: none;
-	cursor: pointer;
-	color: var(--text-secondary);
-
-	padding: 12px;
-}
-
-.auth-user-logout-icon {
-	width: 25px;
-	height: 25px;
-	transition: all 0.2s ease;
-}
-
-.auth-user-logout-btn:hover .auth-user-logout-icon {
-	color: var(--color-primary);
-}
-
-.text-muted {
-	color: var(--text-muted);
 }
