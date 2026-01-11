@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-layouts.app title="Registrarse">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse / {{ config('app.name') }}</title>
-    @vite(['resources/css/app.css'])
-</head>
-
-<body>
-    <main>
+    @section('main')
         <form method="POST" action="{{ route('register') }}" class="auth-form">
             @csrf
             <label>
@@ -33,8 +24,7 @@
                 @error('email')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="email" name="email" value="{{ old('email') }}" placeholder="usuario@quacker.es"
-                    required>
+                <input type="email" name="email" value="{{ old('email') }}" placeholder="usuario@quacker.es" required>
             </label>
             <label>
                 <span class="text-muted">Contraseña</span>
@@ -53,7 +43,6 @@
             <button type="submit">Registrarse</button>
             <p class="auth-redirect">¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a></p>
         </form>
-    </main>
-</body>
+    @endsection
 
-</html>
+</x-layouts.app>

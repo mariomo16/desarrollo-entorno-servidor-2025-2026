@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-layouts.app :title="'@' . $user->username" :route="route('users.create')">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ '@' }}{{ $user->username }} / {{ config('app.name') }}</title>
-    @vite(['resources/css/app.css'])
-</head>
-
-<body>
-    <main>
+    @section('main')
         <form method="POST" action="{{ route('users.update', $user) }}" class="resource-form">
             @csrf
             @method('PATCH')
@@ -34,8 +25,7 @@
                 @error('email')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="email" name="email" value="{{ $user->email }}" placeholder="usuario@quacker.es"
-                    required>
+                <input type="email" name="email" value="{{ $user->email }}" placeholder="usuario@quacker.es" required>
             </label>
             <label>
                 <span class="text-muted">Contraseña</span>
@@ -49,7 +39,6 @@
                 <button type="submit">Guardar</button>
             </div>
         </form>
-    </main>
-</body>
+    @endsection
 
-</html>
+</x-layouts.app>

@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-layouts.app :title="'🦆' . $quashtag->name" :route="route('quashtags.create')">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦆{{ $quashtag->name }} / {{ config('app.name') }}</title>
-    @vite(['resources/css/app.css'])
-</head>
-
-<body>
-    <main>
+    @section('main')
         <form method="POST" action="{{ route('quashtags.update', $quashtag) }}" class="resource-form">
             @csrf
             @method('PATCH')
@@ -18,15 +9,13 @@
                 @error('name')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-                <input type="text" name="name" value="{{ $quashtag->name }}" placeholder="QuackerEsMejorQueX"
-                    required>
+                <input type="text" name="name" value="{{ $quashtag->name }}" placeholder="QuackerEsMejorQueX" required>
             </label>
             <div class="form-actions">
                 <a href="{{ route('quashtags.index') }}">Cancelar</a>
                 <button type="submit">Guardar</button>
             </div>
         </form>
-    </main>
-</body>
+    @endsection
 
-</html>
+</x-layouts.app>

@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-layouts.app title="Crear quack" :route="route('quacks.create')">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear quack / {{ config('app.name') }}</title>
-    @vite(['resources/css/app.css'])
-</head>
-
-<body>
-    <main>
+    @section('main')
         <form method="POST" action="{{ route('quacks.store') }}" class="resource-form">
             @csrf
             <label>
@@ -24,7 +15,6 @@
                 <button type="submit">Crear quack</button>
             </div>
         </form>
-    </main>
-</body>
+    @endsection
 
-</html>
+</x-layouts.app>

@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-layouts.app :title="'@' . $user->username" :route="route('users.create')">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ '@' }}{{ $user->username }} / {{ config('app.name') }}</title>
-    @vite(['resources/css/app.css'])
-</head>
-
-<body>
-    <main>
+    @section('main')
         <article class="show">
             <p>{{ $user->display_name }}</p>
             <p><span class="text-muted">{{ '@' }}{{ $user->username }}</span></p>
@@ -27,7 +18,6 @@
                 </form>
             </div>
         </article>
-    </main>
-</body>
+    @endsection
 
-</html>
+</x-layouts.app>
