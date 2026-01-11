@@ -28,15 +28,13 @@
 	/* Texto */
 	--text-primary: hsl(180, 14%, 97%);
 	--text-secondary: hsl(210, 13%, 65%);
+	--text-muted: hsl(210, 13%, 65%);
 	--text-inverse: hsl(210, 25%, 8%);
 
 	/* Botones */
 	--button-hover: hsl(209, 20%, 21%);
 	--button-light: hsl(192, 19%, 95%);
 	--button-light-hover: hsl(192, 7%, 85%);
-
-	/* Otros */
-	--nomeacuerdoparaqueeraeste: hsl(204, 7%, 47%);
 }
 
 body {
@@ -274,33 +272,67 @@ footer {
 	font-size: large;
 }
 
-div.auth-widget {
+.auth-user-profile {
 	position: fixed;
-	bottom: 0;
-	left: 0;
+	top: 16px;
+	right: 16px;
 	z-index: 999;
-	display: flex;
-	align-items: center;
+
+	display: grid;
+	grid-auto-flow: column;
+	place-items: center;
 	gap: 10px;
-	margin: 16px;
+
 	padding: 12px 18px;
 	background: var(--bg-secondary);
 	border-radius: 12px;
 	box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+
 	color: var(--text-primary);
+	font-family: sans-serif;
 }
 
-div.auth-widget p span.auth-widget-username {
-	color: var(--text-secondary);
-	opacity: 0.7;
+.auth-user-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+
+	display: grid;
+	place-items: center;
+	background-color: var(--color-primary);
+
+	font-size: 1.5rem;
+	font-weight: bold;
 }
 
-div.auth-widget form button.auth-widget-logout-btn {
-	color: var(--color-primary);
+.auth-user-info {
+	display: grid;
+	justify-items: start;
+	align-content: center;
+}
+
+.auth-user-logout-btn {
+	display: grid;
+	place-items: center;
+
+	background: none;
+	border: none;
 	cursor: pointer;
+	color: var(--text-secondary);
+
+	padding: 12px;
+}
+
+.auth-user-logout-icon {
+	width: 25px;
+	height: 25px;
 	transition: all 0.2s ease;
 }
 
-div.auth-widget form button.auth-widget-logout-btn:hover {
-	color: var(--color-primary-hover);
+.auth-user-logout-btn:hover .auth-user-logout-icon {
+	color: var(--color-primary);
+}
+
+.text-muted {
+	color: var(--text-muted);
 }
