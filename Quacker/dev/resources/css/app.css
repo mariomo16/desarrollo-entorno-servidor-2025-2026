@@ -76,6 +76,10 @@ nav.nav-menu a svg {
 	height: 44px;
 }
 
+nav.nav-menu a.active-route {
+	color: var(--color-primary);
+}
+
 main {
 	width: 600px;
 	margin: 0 auto;
