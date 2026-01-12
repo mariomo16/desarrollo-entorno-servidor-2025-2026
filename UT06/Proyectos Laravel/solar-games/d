@@ -1,0 +1,12 @@
+[90m= [39m[34;4mApp\Models\Game[39;24m {#6057
+    [34mid[39m: [35m1[39m,
+    [34mtitle[39m: "[32mQuae assumenda ipsum error occaecati voluptatem sint.[39m",
+    [34msynopsis[39m: "[32mPerferendis et blanditiis aspernatur. Ad autem sint sequi. Architecto sit rerum corporis enim.[39m",
+    [34mdeveloper[39m: "[32mGerlach LLC[39m",
+    [34mpublisher[39m: "[32mBauch-Krajcik[39m",
+    [34mrelease_year[39m: [35m1974[39m,
+    [34mgenre_id[39m: [35m3[39m,
+    [34mcreated_at[39m: "[32m2026-01-12 10:30:45[39m",
+    [34mupdated_at[39m: "[32m2026-01-12 10:30:45[39m",
+  }
+
