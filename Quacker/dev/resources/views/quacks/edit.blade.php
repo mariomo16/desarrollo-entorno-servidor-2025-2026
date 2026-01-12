@@ -1,21 +1,25 @@
 <x-layouts.app :title="'Quack ' . $quack->id" :route="route('quacks.create')">
 
     @section('main')
-        <form method="POST" action="{{ route('quacks.update', $quack) }}" class="resource-form">
-            @csrf
-            @method('PATCH')
-            <label>
-                <span class="text-muted">Quack, quack, ¿qué pasa?</span>
-                @error('content')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-            </label>
-            <textarea name="content" maxlength="280" required>{{ $quack->content }}</textarea>
-            <div class="form-actions">
-                <a href="{{ route('quacks.index') }}">Cancelar</a>
-                <button type="submit">Guardar</button>
-            </div>
-        </form>
+        <section class="resource-section">
+            <form method="POST" action="{{ route('quacks.update', $quack) }}" class="resource-form">
+                @csrf
+                @method('PATCH')
+                <div class="input-group">
+                    <textarea name="content" placeholder=" " maxlength="280" required>{{ $quack->content }}</textarea>
+                    <label class="textarea-label">
+                        <span class="text-muted">Quack, quack, ¿qué pasa?</span>
+                        @error('content')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <a href="{{ route('quacks.index') }}">Cancelar</a>
+                    <button type="submit">Guardar</button>
+                </div>
+            </form>
+        </section>
     @endsection
 
 </x-layouts.app>
