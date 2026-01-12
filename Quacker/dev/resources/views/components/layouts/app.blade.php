@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }} / {{ config('app.name') }}</title>
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -22,12 +22,6 @@
     <main>
         @yield('main')
     </main>
-    @guest
-        <footer>
-            <p><span class="text-muted unselectable">Correo electrónico: </span>admin@quacker.es</p>
-            <p><span class="text-muted unselectable">Contraseña: </span> Admin123</p>
-        </footer>
-    @endguest
 </body>
 
 </html>

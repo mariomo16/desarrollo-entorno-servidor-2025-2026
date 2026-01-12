@@ -1,25 +1,47 @@
 <x-layouts.app title="Iniciar sesión">
 
     @section('main')
-        <form method="POST" action="{{ route('login') }}" class="auth-form">
-            @csrf
-            <label>
-                <span class="text-muted">Correo electrónico</span>
-                @error('email')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-                <input type="email" name="email" required>
-            </label>
-            <label>
-                <span class="text-muted">Contraseña</span>
-                @error('password')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-                <input type="password" name="password" required>
-            </label>
-            <button type="submit">Iniciar sesión</button>
-            <p class="auth-redirect">¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a></p>
-        </form>
+        <section class="auth-section">
+            <form method="POST" action="{{ route('login') }}" class="auth-form unselectable">
+                @csrf
+                <div class="input-group">
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder=" " required>
+                    <label for="email">
+                        <span class="text-muted">Correo electrónico</span>
+                        @error('email')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+                    </label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder=" " required>
+                    <label for="password">
+                        <span class="text-muted">
+                            Contraseña</span>
+                        @error('password')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+                    </label>
+                    <div class="show-hide-password">
+                        <x-icon.eye />
+                    </div>
+                </div>
+                <button type="submit">Iniciar sesión</button>
+                <p class="auth-redirect">¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a>
+                </p>
+
+                <div class="divider">
+                    <p>Usuario de prueba</p>
+                </div>
+
+                <div class="auth-credentials">
+                    <p><span class="text-muted">Correo electrónico: </span><b><span
+                                class="selectable">admin@quacker.es</span></b>
+                    </p>
+                    <p><span class="text-muted">Contraseña: </span><b><span class="selectable">Admin123</span></b></p>
+                </div>
+            </form>
+        </section>
     @endsection
 
 </x-layouts.app>
