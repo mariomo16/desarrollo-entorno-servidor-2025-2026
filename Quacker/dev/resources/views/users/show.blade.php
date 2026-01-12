@@ -2,8 +2,7 @@
 
     @section('main')
         <article class="show">
-            <p>{{ $user->display_name }}</p>
-            <p><span class="text-muted">{{ '@' }}{{ $user->username }}</span></p>
+            <p>{{ $user->display_name }} <span class="text-muted">{{ '@' }}{{ $user->username }}</span></p>
             <p class="user-content"><span class="text-muted">Correo electrónico: {{ $user->email }}</span></p>
             <p class="user-content"><span class="text-muted">Se unió en {{ $user->created_at->isoFormat('MMMM') }} de
                     {{ $user->created_at->isoFormat('YYYY') }}</span></p>
