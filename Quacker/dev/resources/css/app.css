@@ -359,6 +359,11 @@ article.show {
 	border-radius: 12px;
 }
 
+article.index p:first-child,
+article.show p:first-child {
+	margin-bottom: 5px;
+}
+
 .resource-actions,
 .form-actions {
 	display: flex;
