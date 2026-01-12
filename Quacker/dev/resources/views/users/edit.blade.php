@@ -10,10 +10,10 @@
                         maxlength="50" required>
                     <label for="display_name">
                         <span class="text-muted">Nombre</span>
-                        @error('display_name')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('display_name')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="input-group">
@@ -22,10 +22,10 @@
                         maxlength="15" required>
                     <label for="username">
                         <span class="text-muted">Nombre de usuario</span>
-                        @error('username')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('username')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="input-group">
@@ -33,20 +33,20 @@
                         required>
                     <label for="email">
                         <span class="text-muted">Correo electrónico</span>
-                        @error('email')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('email')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="input-group">
                     <input type="password" id="password" name="password" placeholder=" " required>
                     <label for="password">
                         <span class="text-muted">Contraseña</span>
-                        @error('password')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('password')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                     <div class="show-hide-password">
                         <x-icon.eye />
                     </div>

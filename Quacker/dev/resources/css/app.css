@@ -58,8 +58,9 @@ body {
 }
 
 .error-message {
-	float: inline-end;
 	color: var(--danger);
+	position: absolute;
+	top: -25px;
 }
 
 /* Para que al autocompletar un input, no se cambie el fondo a blanco ni el texto a negro */

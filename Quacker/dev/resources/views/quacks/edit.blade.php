@@ -9,10 +9,10 @@
                     <textarea name="content" placeholder=" " maxlength="280" required>{{ $quack->content }}</textarea>
                     <label class="textarea-label">
                         <span class="text-muted">Quack, quack, ¿qué pasa?</span>
-                        @error('content')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('content')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="form-actions">
                     <a href="{{ route('quacks.index') }}">Cancelar</a>

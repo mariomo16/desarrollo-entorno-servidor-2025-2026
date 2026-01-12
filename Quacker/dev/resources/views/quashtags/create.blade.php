@@ -10,10 +10,10 @@
                         placeholder=" " required>
                     <label for="name">
                         <span class="text-muted">Quashtag</span>
-                        @error('name')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('name')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="form-actions">
                     <a href="{{ route('quashtags.index') }}">Cancelar</a>

@@ -8,20 +8,20 @@
                     <input type="email" id="email" name="email" autocomplete="email" placeholder=" " required>
                     <label for="email">
                         <span class="text-muted">Correo electrónico</span>
-                        @error('email')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('email')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="input-group">
                     <input type="password" id="password" name="password" placeholder=" " required>
                     <label for="password">
                         <span class="text-muted">
                             Contraseña</span>
-                        @error('password')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </label>
+                    @error('password')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                     <div class="show-hide-password">
                         <x-icon.eye />
                     </div>
