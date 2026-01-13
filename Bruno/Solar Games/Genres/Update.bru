@@ -1,0 +1,20 @@
+meta {
+  name: Update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{BASE_URL}}/genres/2
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  name: HackNSlash
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

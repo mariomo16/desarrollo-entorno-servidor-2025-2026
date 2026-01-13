@@ -15,7 +15,28 @@ Route::get('/', function () {
     return "Laravel ha vuelto, ¡y en forma de API!";
 });
 
+// ->middleware('auth:sanctum')
+
 Route::get('/genres', [GenreController::class, 'index']);
+Route::get('/genres/{genre}', [GenreController::class, 'show']);
+Route::post('/genres', [GenreController::class, 'store']);
+Route::patch('/genres/{genre}', [GenreController::class, 'update']);
+Route::delete('/genres/{genre}', [GenreController::class, 'delete']);
+
 Route::get('/games', [GameController::class, 'index']);
+Route::get('/games/{game}', [GameController::class, 'show']);
+Route::post('/games', [GameController::class, 'store']);
+Route::patch('/games/{game}', [GameController::class, 'update']);
+Route::delete('/games/{game}', [GameController::class, 'delete']);
+
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{user}', [UserController::class, 'show']);
+Route::post('/users', [UserController::class, 'store']);
+Route::patch('/users/{user}', [UserController::class, 'update']);
+Route::delete('/users/{user}', [UserController::class, 'delete']);
+
 Route::get('/reviews', [ReviewController::class, 'index']);
+Route::get('/reviews/{review}', [ReviewController::class, 'show']);
+Route::post('/reviews', [ReviewController::class, 'store']);
+Route::patch('/reviews/{review}', [ReviewController::class, 'update']);
+Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);

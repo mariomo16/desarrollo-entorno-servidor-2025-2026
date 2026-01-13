@@ -10,6 +10,8 @@ class Genre extends Model
     /** @use HasFactory<\Database\Factories\GenreFactory> */
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function game()
     {
         return $this->hasMany(Game::class);
