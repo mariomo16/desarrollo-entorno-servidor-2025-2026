@@ -2,6 +2,14 @@ headers {
   Accept: application/json
 }
 
+auth {
+  mode: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
 vars:pre-request {
   : 
 }

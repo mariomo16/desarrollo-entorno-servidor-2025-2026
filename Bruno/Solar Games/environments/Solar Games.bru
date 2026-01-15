@@ -1,3 +1,8 @@
 vars {
-  BASE_URL: http://localhost:8000/api
+  BASE_PORT: 8000
+  BASE_NAME: localhost
+  BASE_URL: http://{{BASE_NAME}}:{{BASE_PORT}}/api
 }
+vars:secret [
+  TOKEN
+]

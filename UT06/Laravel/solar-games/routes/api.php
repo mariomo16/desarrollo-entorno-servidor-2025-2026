@@ -15,13 +15,11 @@ Route::get('/', function () {
     return "Laravel ha vuelto, ¡y en forma de API!";
 });
 
-// ->middleware('auth:sanctum')
-
 Route::get('/genres', [GenreController::class, 'index']);
 Route::get('/genres/{genre}', [GenreController::class, 'show']);
-Route::post('/genres', [GenreController::class, 'store']);
-Route::patch('/genres/{genre}', [GenreController::class, 'update']);
-Route::delete('/genres/{genre}', [GenreController::class, 'delete']);
+Route::post('/genres', [GenreController::class, 'store'])->middleware('auth:sanctum');
+Route::patch('/genres/{genre}', [GenreController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('/genres/{genre}', [GenreController::class, 'delete'])->middleware('auth:sanctum');
 
 Route::get('/games', [GameController::class, 'index']);
 Route::get('/games/{game}', [GameController::class, 'show']);
