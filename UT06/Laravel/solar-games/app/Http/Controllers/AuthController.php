@@ -25,6 +25,6 @@ class AuthController extends Controller
 
     public function logout()
     {
-
+        return Auth::user();
     }
 }
