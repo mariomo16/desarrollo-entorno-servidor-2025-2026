@@ -8,7 +8,6 @@ use App\Http\Requests\LoginRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -21,15 +20,7 @@ class AuthController extends Controller
     // Método para registrar un usuario e iniciar sesión automáticamente 
     public function store(RegisterRequest $request)
     {
-        $data = $request->validated();
-
-        $user = User::create([
-            'display_name' => $data['display_name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'email_verified_at' => now(),
-            'password' => Hash::make($data['password'])
-        ]);
+        $user = User::create($request->validated());
 
         Auth::login($user);
         $request->session()->regenerate();
