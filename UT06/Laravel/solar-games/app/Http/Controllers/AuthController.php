@@ -15,7 +15,7 @@ class AuthController extends Controller
             ], 400);
         }
 
-        $token = Auth::user()->createToken('Token para ' . Auth::user()->email);
+        $token = Auth::user()->createToken('Token para ' . Auth::user()->email, expiresAt: now()->addMonth());
 
         return response()->json([
             'message' => 'Todo gucci',
