@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\User;
+use App\Models\Quack;
+use App\Models\Quashtag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,11 +12,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('quacks', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->text('content');
-            $table->timestamps();
+        Schema::create('quack_quashtag', function (Blueprint $table) {
+            $table->foreignIdFor(Quack::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Quashtag::class)->constrained()->cascadeOnDelete();
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('quacks');
+        Schema::dropIfExists('quack_quashtag');
     }
 };

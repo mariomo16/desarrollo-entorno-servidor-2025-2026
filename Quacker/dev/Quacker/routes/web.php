@@ -8,7 +8,7 @@ use App\Http\Controllers\QuackController;
 use App\Http\Controllers\QuashtagController;
 
 Route::get('/', function () {
-    return redirect('/quacks');
+    return redirect('/login');
 });
 
 // Rutas para invitados (no autenticados)
@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('quacks', QuackController::class);
     Route::resource('users', UserController::class);
     Route::resource('quashtags', QuashtagController::class);
+
+    Route::post('/quacks/{quack}/quav', [QuackController::class, 'quav'])->name('quav');
+    Route::post('/quacks/{quack}/requack', [QuackController::class, 'requack'])->name('requack');
 });

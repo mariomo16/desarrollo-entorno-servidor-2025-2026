@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Quack;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,11 +12,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('quacks', function (Blueprint $table) {
-            $table->id();
+        Schema::create('requacks', function (Blueprint $table) {
+            $table->foreignIdFor(Quack::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->text('content');
-            $table->timestamps();
+            $table->primary(['quack_id', 'user_id']);
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('quacks');
+        Schema::dropIfExists('requacks');
     }
 };

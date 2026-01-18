@@ -425,15 +425,13 @@ article.show p:first-child {
 	margin-bottom: 5px;
 }
 
+.actions,
 .resource-actions,
-.form-actions {
+.form-actions,
+.quack-actions {
 	display: flex;
 	gap: 0.5rem;
 	margin-top: 1rem;
-}
-
-.resource-actions {
-	justify-content: start;
 }
 
 .form-actions {
@@ -503,4 +501,46 @@ article.show p:first-child {
 	box-shadow:
 		0 10px 25px -5px var(--accent),
 		0 8px 10px -6px var(--accent);
+}
+
+.quack-actions {
+	justify-content: start;
+	gap: 1rem;
+}
+
+.quack-actions a,
+.quack-actions button {
+	padding: 6px;
+	border: none;
+	border-radius: 999px;
+
+	background: none;
+	color: var(--text-muted);
+	cursor: pointer;
+
+	transition: all 0.2s ease;
+}
+
+.actions {
+	justify-content: space-between;
+}
+
+.quack-actions svg {
+	width: 22px;
+	height: 22px;
+}
+
+.comment-btn:hover {
+	color: hsl(210, 100%, 58%);
+	background-color: hsla(210, 100%, 58%, 20%);
+}
+
+.requack-btn:hover {
+	color: hsl(160, 100%, 36%);
+	background-color: hsla(160, 100%, 36%, 20%);
+}
+
+.quav-btn:hover {
+	color: hsl(332, 95%, 54%);
+	background-color: hsla(332, 95%, 54%, 20%);
 }
