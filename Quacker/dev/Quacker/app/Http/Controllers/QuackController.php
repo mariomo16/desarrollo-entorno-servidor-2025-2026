@@ -13,7 +13,7 @@ class QuackController extends Controller
     public function index()
     {
         return view('quacks.index', [
-            'quacks' => Quack::latest()->get()
+            'quacks' => Quack::with('user')->latest()->get()
         ]);
     }
 
@@ -30,11 +30,8 @@ class QuackController extends Controller
      */
     public function store(QuackRequest $request)
     {
-        $data = $request->validated();
-        $data['user_id'] = auth()->id();
-
-        Quack::create($data);
-        return redirect()->route('quacks.index');
+        Quack::create($request->validated() + ['user_id' => auth()->id()]);
+        return to_route('quacks.index');
     }
 
     /**
@@ -67,7 +64,7 @@ class QuackController extends Controller
         $this->authorize('manage', $quack);
 
         $quack->update($request->validated());
-        return redirect()->route('quacks.show', [$quack]);
+        return to_route('quacks.show', [$quack]);
     }
 
     /**
@@ -78,6 +75,6 @@ class QuackController extends Controller
         $this->authorize('manage', $quack);
 
         $quack->delete();
-        return redirect()->route('quacks.index');
+        return to_route('quacks.index');
     }
 }
