@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\QuackRequest;
 use App\Models\Quack;
-use App\Models\User;
 use Auth;
 
 class QuackController extends Controller
@@ -15,7 +14,12 @@ class QuackController extends Controller
     public function index()
     {
         return view('quacks.index', [
-            'quacks' => Quack::with(['user', 'quashtags'])->latest()->get()
+            'quacks' => Quack::with([
+                'user',
+                'quashtags',
+                'quavs' => fn($query) => $query->where('user_id', Auth::user()->id),
+                'requacks' => fn($query) => $query->where('user_id', Auth::user()->id),
+            ])->withCount(['quavs', 'requacks'])->latest()->get()
         ]);
     }
 

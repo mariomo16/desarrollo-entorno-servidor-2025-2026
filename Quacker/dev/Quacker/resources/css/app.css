@@ -532,7 +532,7 @@ article.show p:first-child {
 
 .quack-actions form button {
 	display: flex;
-	gap: 0.4rem;
+	gap: 0.2rem;
 }
 
 .comment-btn:hover {
@@ -548,4 +548,32 @@ article.show p:first-child {
 .quav-btn:hover {
 	color: hsl(332, 95%, 54%);
 	background-color: hsla(332, 95%, 54%, 20%);
+}
+
+.divGeneral {
+	display: flex;
+	grid-auto-flow: column;
+	gap: 12px;
+}
+
+.divImagen {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+
+	display: grid;
+	place-items: center;
+	background-color: var(--bg-tertiary);
+
+	font-size: 1.4rem;
+	font-weight: bold;
+	font-family: sans-serif;
+
+	flex-shrink: 0;
+}
+
+.divTexto {
+	display: grid;
+	gap: 0;
+	width: 100%;
 }

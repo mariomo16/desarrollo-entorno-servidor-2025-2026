@@ -31,7 +31,10 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create($request->validated());
+        $data = $request->validated();
+        $data['username'] = str_replace(' ', '.', trim($data['username']));
+
+        User::create($data);
         return to_route('users.index');
     }
 
@@ -60,7 +63,10 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update(array_filter($request->validated()));
+        $data = $request->validated();
+        $data['username'] = str_replace(' ', '.', trim($data['username']));
+
+        $user->update(array_filter($data));
         return to_route('users.show', [$user]);
     }
 
