@@ -530,6 +530,11 @@ article.show p:first-child {
 	height: 22px;
 }
 
+.quack-actions form button {
+	display: flex;
+	gap: 0.4rem;
+}
+
 .comment-btn:hover {
 	color: hsl(210, 100%, 58%);
 	background-color: hsla(210, 100%, 58%, 20%);

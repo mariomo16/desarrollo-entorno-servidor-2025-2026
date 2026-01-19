@@ -80,12 +80,14 @@ class QuackController extends Controller
         return to_route('quacks.index');
     }
 
+    // Método para dar/quitar quav a un Quack
     public function quav(Quack $quack)
     {
         Auth::user()->quavs()->toggle($quack->id);
         return back();
     }
 
+    // Método para dar/quitar requack a un Quack
     public function requack(Quack $quack)
     {
         Auth::user()->requacks()->toggle($quack->id);

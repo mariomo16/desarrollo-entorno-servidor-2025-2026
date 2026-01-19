@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use function count;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +23,21 @@ class Quack extends Model
     {
         // https://stackoverflow.com/questions/38686188/check-if-user-liked-post-laravel
         return $this->requacks()->where('user_id', $user->id)->exists();
+    }
+
+    public function getQuavs()
+    {
+        return count($this->quavs);
+    }
+
+    public function getRequacks()
+    {
+        return count($this->requacks);
+    }
+
+    public function getComments()
+    {
+        return 0;
     }
 
     public function user()

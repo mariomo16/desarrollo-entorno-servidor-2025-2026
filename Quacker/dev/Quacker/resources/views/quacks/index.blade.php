@@ -13,7 +13,10 @@
                         <form method="POST" action="{{-- route('comment', $quack) --}}">
                             @csrf
                             @method('POST')
-                            <button type="submit" class="comment-btn"><x-icon.comment /></button>
+                            <button type="submit" class="comment-btn">
+                                <x-icon.comment />
+                                {{ $quack->getComments() }}
+                            </button>
                         </form>
 
                         <form method="POST" action="{{ route('requack', $quack) }}">
@@ -21,6 +24,7 @@
                             @method('POST')
                             <button type="submit" class="requack-btn">
                                 <x-icon.share :state="$quack->isRequackedBy(Auth::user())" />
+                                {{ $quack->getQuavs() }}
                             </button>
                         </form>
 
@@ -29,6 +33,7 @@
                             @method('POST')
                             <button type="submit" class="quav-btn">
                                 <x-icon.like :state="$quack->isQuavedBy(Auth::user())" />
+                                {{ $quack->getRequacks() }}
                             </button>
                         </form>
                     </div>
