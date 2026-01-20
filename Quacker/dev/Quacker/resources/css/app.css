@@ -534,7 +534,9 @@ article.show p:first-child {
 .quack-actions form button {
 	display: flex;
 	gap: 0.2rem;
+    place-items: center;
 }
+
 
 .comment-btn:hover {
 	color: hsl(210, 100%, 58%);
