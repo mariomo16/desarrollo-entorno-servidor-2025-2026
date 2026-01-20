@@ -530,6 +530,7 @@ article.show p:first-child {
 	height: 22px;
 }
 
+.quack-actions div button,
 .quack-actions form button {
 	display: flex;
 	gap: 0.2rem;
