@@ -7,12 +7,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuackController;
 use App\Http\Controllers\QuashtagController;
 
-Route::get('/', function () {
-    return redirect('/login');
-});
-
 // Rutas para invitados (no autenticados)
 Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return redirect('/login');
+    });
+
     Route::get('/register', [AuthController::class, 'create'])->name('register');
     Route::post('/register', [AuthController::class, 'store']);
 
@@ -23,6 +23,10 @@ Route::middleware('guest')->group(function () {
 
 // Rutas protegidas (requieren autenticación)
 Route::middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return redirect('/quacks');
+    });
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::resource('quacks', QuackController::class);
