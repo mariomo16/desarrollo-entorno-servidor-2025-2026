@@ -1,0 +1,4 @@
+php artisan make:model Zulo -mfc
+php artisan make:model Especulador -mfc
+php artisan make:model Usuario -mfc
+php artisan make:migration create_interesados_table
