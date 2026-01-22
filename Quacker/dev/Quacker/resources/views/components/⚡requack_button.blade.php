@@ -35,7 +35,7 @@ new class extends Component {
 ?>
 
 <div>
-    <button wire:click="requack" class="requack-btn">
+    <button wire:click="requack" class="quack-requack">
         <svg aria-hidden="true" class="w-4 h-4 me-2 text-neutral-tertiary animate-spin fill-brand" viewBox="0 0 100 101"
             fill="none" xmlns="http://www.w3.org/2000/svg" wire:loading>
             <path

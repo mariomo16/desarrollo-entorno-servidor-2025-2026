@@ -1,21 +1,49 @@
-<x-layouts.app title="Usuarios" :route="route('users.create')">
+<x-layouts.app :title="'@' . $user->username" :route="route('users.create')">
 
     @section('main')
-        @foreach ($users as $user)
-            <article class="index">
-                <p><b>{{ $user->display_name }}</b> <span class="text-muted">{{ '@' }}{{ $user->username }}</span>
-                </p>
-                <div class="resource-actions">
-                    <a href="{{ route('users.show', $user) }}">Mostrar más</a>
-                    <a href="{{ route('users.edit', $user) }}">Editar</a>
-                    <form method="POST" action="{{ route('users.destroy', $user) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn-delete">Eliminar</button>
-                    </form>
+        <article class="user-show">
+            <div class="user-user-avatar">
+                {{ Str::of(strtoupper($user->display_name))->substr(0, 1) }}
+            </div>
+
+            <div class="user-card">
+                <div class="user-info">
+                    <p>
+                        <strong>{{ $user->display_name }}</strong>
+                        <span class="text-muted">{{ '@' }}{{ $user->username }}</span>
+                    </p>
+                    <p>
+                        <span class="text-muted">Correo electrónico: {{ $user->email }}</span>
+                    </p>
+                    <p>
+                        <span class="text-muted">Se unió en {{ $user->created_at->isoFormat('MMMM') }} de
+                            {{ $user->created_at->isoFormat('YYYY') }}
+                        </span>
+                    </p>
                 </div>
-            </article>
-        @endforeach
+
+                <div class="user-toolbar">
+                    <div>
+                        <form method="" action="">
+                            <button type="submit" class="user-follow">
+                                <x-icon.user-plus />
+                                {{ '0' }}
+                            </button>
+                        </form>
+                    </div>
+                    <div class="user-actions">
+                        <a href="{{ route('users.index') }}">Volver</a>
+                        <a href="{{ route('users.edit', $user) }}">Editar</a>
+                        <form method="POST" action="{{ route('users.destroy', $user) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </article>
     @endsection
 
 </x-layouts.app>
