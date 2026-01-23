@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GamesRelationshipsGenreResource extends JsonResource
+class GamesRelationshipsGenreResource extends JsonResource // RelationshipOneResource
 {
     /**
      * Transform the resource into an array.
@@ -23,4 +23,14 @@ class GamesRelationshipsGenreResource extends JsonResource
             'id' => (string) $this->genre->id,
         ];
     }
+
+    // protected function getResourceName(): string
+    // {
+    //     return 'game';
+    // }
+
+    // protected function getRelationshipName(): string
+    // {
+    //     return 'genre';
+    // }
 }

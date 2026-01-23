@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GamesRelationshipsReviewsResource extends JsonResource
+class GamesRelationshipsReviewsResource extends JsonResource // RelationshipManyResource
 {
     /**
      * Transform the resource into an array.
@@ -25,4 +25,14 @@ class GamesRelationshipsReviewsResource extends JsonResource
             ]),
         ];
     }
+
+    // protected function getResourceName(): string
+    // {
+    //     return 'game';
+    // }
+
+    // protected function getRelationshipName(): string
+    // {
+    //     return 'reviews';
+    // }
 }
