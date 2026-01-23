@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ReviewResource;
+use App\Models\Game;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -42,5 +43,10 @@ class ReviewController extends Controller
     public function userReviews(User $user)
     {
         return ReviewResource::collection($user->reviews);
+    }
+
+    public function gameReviews(Game $game)
+    {
+        return ReviewResource::collection($game->reviews);
     }
 }

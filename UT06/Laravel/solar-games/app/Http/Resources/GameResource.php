@@ -30,17 +30,8 @@ class GameResource extends JsonResource
                 'self' => route('games.show', ['game' => $this->id]),
             ],
             'relationships' => [
-                'genre' => [
-                    'links' => [
-                        'self' => route('genres.show', ['genre' => $this->genre->id]),
-                    ],
-                    'data' => [
-                        [
-                            'type' => 'genre',
-                            'id' => (string) $this->genre->id,
-                        ],
-                    ],
-                ],
+                'genre' => new GamesRelationshipsGenreResource($this->id),
+                'reviews' => new GamesRelationshipsReviewsResource($this->id),
             ],
             'included' => [
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\GameResource;
+use App\Http\Resources\GamesRelationshipsGenreResource;
+use App\Http\Resources\GamesRelationshipsReviewsResource;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
@@ -36,5 +38,15 @@ class GameController extends Controller
         return response()->json([
             'mensaje' => 'ELiminado con éxito'
         ]);
+    }
+
+    public function gamesRelationshipsGenre(game $game)
+    {
+        return new GamesRelationshipsGenreResource($game);
+    }
+
+    public function gamesRelationshipsReviews(game $game)
+    {
+        return new GamesRelationshipsReviewsResource($game);
     }
 }
