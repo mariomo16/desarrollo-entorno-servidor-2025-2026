@@ -13,8 +13,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('quack_quashtag', function (Blueprint $table) {
-            $table->foreignIdFor(Quack::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Quashtag::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Quack::class);
+            $table->foreignIdFor(Quashtag::class);
         });
     }
 

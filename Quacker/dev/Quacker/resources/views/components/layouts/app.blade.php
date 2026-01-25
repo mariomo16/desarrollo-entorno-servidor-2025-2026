@@ -17,7 +17,7 @@
         <header>
             {{-- https://laravel.com/docs/12.x/strings#method-fluent-str-substr --}}
             <div class="auth-user-profile">
-                <div class="auth-user-avatar unselectable">
+                <div class="auth-user-avatar">
                     {{ Str::of(strtoupper(auth()->user()->display_name))->substr(0, 1) }}
                 </div>
 
@@ -28,20 +28,20 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    @method('POST')
                     <button type="submit" class="auth-user-logout-btn">Cerrar sesión<x-icon.logout /></button>
                 </form>
             </div>
 
             {{-- https://laravel.com/docs/12.x/requests#inspecting-the-request-path --}}
             <nav class="main-nav">
-                <a href="{{ $route }}"><x-icon.plus />Crear recurso</a>
+                <a href="{{ route('feed') }}" class="{{ request()->routeIs('feed') ? 'active-route' : '' }}"><x-icon.slash />Feed</a>
                 <a href="{{ route('quacks.index') }}"
                     class="{{ request()->routeIs('quacks.*') ? 'active-route' : '' }}"><x-icon.quack />Quacks</a>
                 <a href="{{ route('quashtags.index') }}"
                     class="{{ request()->routeIs('quashtags.*') ? 'active-route' : '' }}"><x-icon.quashtag />Quashtags</a>
                 <a href="{{ route('users.index') }}"
                     class="{{ request()->routeIs('users.*') ? 'active-route' : '' }}"><x-icon.user />Usuarios</a>
+                <a href="{{ $route }}"><x-icon.plus />Crear recurso</a>
             </nav>
 
             <div class="app-logo">

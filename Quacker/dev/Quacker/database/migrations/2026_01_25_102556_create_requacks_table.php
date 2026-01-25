@@ -15,7 +15,8 @@ return new class extends Migration {
         Schema::create('requacks', function (Blueprint $table) {
             $table->foreignIdFor(Quack::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->primary(['quack_id', 'user_id']);
+            $table->timestamps();
+            $table->primary(['user_id', 'quack_id']);
         });
     }
 

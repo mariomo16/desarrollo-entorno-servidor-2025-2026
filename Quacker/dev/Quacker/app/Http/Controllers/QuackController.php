@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\QuackRequest;
 use App\Models\Quack;
-use Auth;
 
 class QuackController extends Controller
 {
@@ -14,12 +13,7 @@ class QuackController extends Controller
     public function index()
     {
         return view('quacks.index', [
-            'quacks' => Quack::with([
-                'user',
-                'quashtags',
-                'quavs' => fn($query) => $query->where('user_id', Auth::user()->id),
-                'requacks' => fn($query) => $query->where('user_id', Auth::user()->id),
-            ])->withCount(['quavs', 'requacks'])->latest()->get()
+            'quacks' => Quack::with(['user'])->withCount(['quavs', 'requacks'])->latest()->get()
         ]);
     }
 
@@ -46,7 +40,7 @@ class QuackController extends Controller
     public function show(Quack $quack)
     {
         return view('quacks.show', [
-            'quack' => $quack
+            'quack' => Quack::with(['user'])->withCount(['quavs', 'requacks'])->find($quack->id)
         ]);
     }
 
@@ -84,17 +78,18 @@ class QuackController extends Controller
         return to_route('quacks.index');
     }
 
-    // Método para dar/quitar quav a un Quack
-    public function quav(Quack $quack)
+    public function feed()
     {
-        Auth::user()->quavs()->toggle($quack->id);
-        return back();
+        return view('quacks.feed', [
+            'quacks' => Quack::with(['user'])->withCount(['quavs', 'requacks'])->latest()->get()
+        ]);
     }
 
-    // Método para dar/quitar requack a un Quack
-    public function requack(Quack $quack)
+    public function userQuacks(int $id)
     {
-        Auth::user()->requacks()->toggle($quack->id);
-        return back();
+        return view('users.userQuacks', [
+            'user_id' => $id,
+            'quacks' => Quack::with(['user'])->withCount(['quavs', 'requacks'])->latest()->get()
+        ]);
     }
 }

@@ -21,7 +21,7 @@ class AuthController extends Controller
     public function store(RegisterRequest $request)
     {
         $data = $request->validated();
-        $data['username'] = str_replace(' ', '.', trim($data['username']));
+        $data['username'] = str_replace(' ', '.', $data['username']);
 
         $user = User::create($data);
 
@@ -44,7 +44,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return to_route('quacks.index');
+            return to_route('feed');
         }
 
         return back()->withErrors([

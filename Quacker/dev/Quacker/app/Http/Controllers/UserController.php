@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index', [
-            'users' => User::latest()->get()
+            'users' => User::withCount(['quacks', 'following', 'followers'])->latest()->get()
         ]);
     }
 
@@ -32,7 +32,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
-        $data['username'] = str_replace(' ', '.', trim($data['username']));
+        $data['username'] = str_replace(' ', '.', $data['username']);
 
         User::create($data);
         return to_route('users.index');
@@ -44,7 +44,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return view('users.show', [
-            'user' => $user
+            'user' => User::withCount(['quacks', 'following', 'followers'])->find($user->id)
         ]);
     }
 
@@ -63,10 +63,10 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->validated();
-        $data['username'] = str_replace(' ', '.', trim($data['username']));
+        $data = array_filter($request->validated());
+        $data['username'] = str_replace(' ', '.', $data['username']);
 
-        $user->update(array_filter($data));
+        $user->update($data);
         return to_route('users.show', [$user]);
     }
 
@@ -77,5 +77,12 @@ class UserController extends Controller
     {
         User::destroy($id);
         return to_route('users.index');
+    }
+
+    public function editAuth()
+    {
+        return view('users.edit', [
+            'user' => auth()->user()
+        ]);
     }
 }

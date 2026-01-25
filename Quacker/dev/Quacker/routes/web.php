@@ -9,9 +9,7 @@ use App\Http\Controllers\QuashtagController;
 
 // Rutas para invitados (no autenticados)
 Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return redirect('/login');
-    });
+    Route::redirect('/', 'login');
 
     Route::get('/register', [AuthController::class, 'create'])->name('register');
     Route::post('/register', [AuthController::class, 'store']);
@@ -23,16 +21,16 @@ Route::middleware('guest')->group(function () {
 
 // Rutas protegidas (requieren autenticación)
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return redirect('/quacks');
-    });
+    Route::redirect('/', 'feed');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+    Route::get('/feed', [QuackController::class, 'feed'])->name('feed');
+
     Route::resource('quacks', QuackController::class);
-    Route::resource('users', UserController::class);
     Route::resource('quashtags', QuashtagController::class);
 
-    Route::post('/quacks/{quack}/quav', [QuackController::class, 'quav'])->name('quav');
-    Route::post('/quacks/{quack}/requack', [QuackController::class, 'requack'])->name('requack');
+    Route::get('/users/edit', [UserController::class, 'editAuth'])->name('editAuth');
+    Route::get('/users/{id}/quacks', [QuackController::class, 'userQuacks'])->name('user.quacks');
+    Route::resource('users', UserController::class);
 });

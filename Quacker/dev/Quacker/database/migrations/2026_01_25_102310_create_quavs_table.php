@@ -13,9 +13,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('quavs', function (Blueprint $table) {
-            $table->foreignIdFor(Quack::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->primary(['quack_id', 'user_id']);
+            $table->foreignIdFor(Quack::class)->constrained()->cascadeOnDelete();
+            $table->timestamps();
+            $table->primary(['user_id', 'quack_id']);
         });
     }
 

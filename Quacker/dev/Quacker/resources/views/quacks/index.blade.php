@@ -3,23 +3,39 @@
     @section('main')
         @foreach ($quacks as $quack)
             <article class="index">
-                <div class="quack-user-avatar">
+                <div class="quack-user-avatar select-none">
                     {{ Str::of(strtoupper($quack->user->display_name))->substr(0, 1) }}
                 </div>
+
                 <div class="quack-content">
                     <p>
-                        <strong>{{ $quack->user->display_name }}</strong>
-                        <span class="text-muted">{{ '@' }}{{ $quack->user->username }} ·
-                            <time>{{ $quack->created_at->diffForHumans(null, true, true, 1) }}</time>
+                        <a href="{{ route('user.quacks', $quack->user_id) }}">
+                            <strong class="hover:underline">{{ $quack->user->display_name }}</strong>
+                            <span class="text-muted">{{ '@' }}{{ $quack->user->username }}</span>
+                        </a>
+                        <span class="text-muted">
+                            · <time>{{ $quack->created_at->diffForHumans(null, true, true, 1) }}</time>
                         </span>
                     </p>
+
                     <p>{{ $quack->content }}</p>
 
-                    <div class="quack-toolbar">
+                    <div class="quack-toolbar select-none">
                         <div class="quack-social">
-                            <livewire:icon.requack :quack-id="$quack->id" />
-                            <livewire:icon.quav />
+                            <form method="" action="">
+                                <button type="submit" class="quack-quav">
+                                    <x-icon.quav :isQuaved="$quack->hasQuaved(auth()->user()->id)" />
+                                    {{ $quack->quavs_count }}
+                                </button>
+                            </form>
+                            <form method="" action="">
+                                <button type="submit" class="quack-requack">
+                                    <x-icon.requack :isRequacked="$quack->hasRequacked(auth()->user()->id)" />
+                                    {{ $quack->requacks_count }}
+                                </button>
+                            </form>
                         </div>
+
                         <div class="quack-actions">
                             <a href="{{ route('quacks.show', $quack) }}">Mostrar más</a>
                             @can('manage', $quack)
