@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GenreResource;
+use App\Models\Game;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
@@ -35,5 +37,10 @@ class GenreController extends Controller
         return response()->json([
             'mensaje' => 'ELiminado con éxito'
         ]);
+    }
+
+    public function gameGenre(Game $game)
+    {
+        return new GenreResource($game->genre);
     }
 }

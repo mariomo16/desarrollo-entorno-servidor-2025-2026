@@ -31,3 +31,13 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 });
+
+Route::get('/games/{game}/genre', [GenreController::class, 'gameGenre'])->name('games.genre');
+
+Route::get('/games/{game}/relationships/genre', [GameController::class, 'gamesRelationshipsGenre'])->name('games.relationships.genre');
+
+Route::get('/games/{game}/reviews', [ReviewController::class, 'gameReviews'])->name('games.reviews');
+
+Route::get('/games/{game}/relationships/reviews', [GameController::class, 'gamesRelationshipsReviews'])->name('games.relationships.reviews');
+
+Route::get('/users', [UserController::class, 'index']);
