@@ -14,6 +14,8 @@ class RelationshipManyResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $table = $this->getTable();
+        $resourceName = $this->get;
         return parent::toArray($request);
     }
 }

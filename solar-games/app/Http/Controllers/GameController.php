@@ -17,6 +17,9 @@ class GameController extends Controller
 
     public function show(Game $game)
     {
+        if ($this->include('genre')) {
+            
+        }
         return new GameResource($game);
     }
 
