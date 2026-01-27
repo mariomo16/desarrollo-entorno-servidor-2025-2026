@@ -79,4 +79,10 @@ class GameController extends Controller
         return GameResource::collection($genre->games);
     }
 
+    public function createGameWithGenre(Request $request, Genre $genre)
+    {
+        $request->merge([
+            'genre_id' => $genre->id
+        ]);
+    }
 }

@@ -34,6 +34,13 @@ class ReviewController extends Controller
 
     public function destroy(Review $review)
     {
+        if ($this->authorize('delete', $review)) {
+            return response()->json([
+                'message' => 'No autorizado',
+                'code' => 403
+            ]);
+        }
+
         $review->delete();
         return response()->json([
             'message' => 'Eliminado con éxito'
@@ -48,5 +55,13 @@ class ReviewController extends Controller
     public function gameReviews(Game $game)
     {
         return ReviewResource::collection($game->reviews);
+    }
+
+    public function createReviewForGame(Request $request, Game $game)
+    {
+        $request->merge([
+            'game_id' => $game->id,
+            'user_id' => auth()->user()
+        ]);
     }
 }

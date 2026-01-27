@@ -32,6 +32,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::post('/genres/{genre}/games', [GameController::class, 'createGameWithGenre'])->can('create');
+
+    Route::post('/games/{game}/reviews', [ReviewController::class, 'createReviewForGame'])->can('create');
 });
 
 Route::get('/games/{game}/genre', [GenreController::class, 'gameGenre'])
