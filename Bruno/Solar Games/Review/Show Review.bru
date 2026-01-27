@@ -1,0 +1,20 @@
+meta {
+  name: Show Review
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{BASE_URL}}/reviews/{{id}}
+  body: none
+  auth: inherit
+}
+
+vars:pre-request {
+  id: 51
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

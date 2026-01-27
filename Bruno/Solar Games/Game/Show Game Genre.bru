@@ -1,0 +1,24 @@
+meta {
+  name: Show Game Genre
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{BASE_URL}}/games/{{id}}/genre
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~include: genre,reviews
+}
+
+vars:pre-request {
+  id: 3
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

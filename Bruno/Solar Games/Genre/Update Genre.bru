@@ -1,17 +1,21 @@
 meta {
-  name: Update
+  name: Update Genre
   type: http
   seq: 4
 }
 
 patch {
-  url: {{BASE_URL}}/genres/2
+  url: {{BASE_URL}}/genres/{{id}}
   body: multipartForm
   auth: inherit
 }
 
 body:multipart-form {
-  name: HackNSlash
+  name: Fluido
+}
+
+vars:pre-request {
+  id: 7
 }
 
 settings {

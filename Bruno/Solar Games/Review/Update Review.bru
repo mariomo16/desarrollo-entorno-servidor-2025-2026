@@ -1,0 +1,27 @@
+meta {
+  name: Update Review
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{BASE_URL}}/reviews/{{id}}
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  comment: Está bien
+  ~score: 6
+  ~game_id: 22
+  ~user_id: 1
+}
+
+vars:pre-request {
+  id: 51
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

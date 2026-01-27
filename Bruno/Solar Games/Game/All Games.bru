@@ -1,0 +1,24 @@
+meta {
+  name: All Games
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{BASE_URL}}/games
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~include: genre
+  ~filter[synopsis]: Lordran
+  ~filter[release_year]: 1998-2004
+  ~filter[developer]: we
+  ~filter[publisher]: fe
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

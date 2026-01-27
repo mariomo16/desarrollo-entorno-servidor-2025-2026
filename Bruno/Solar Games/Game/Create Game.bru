@@ -1,0 +1,36 @@
+meta {
+  name: Create Game
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{BASE_URL}}/games
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Dark Souls",
+    "synopsis" : "Despiertas en Lordran como un no-muerto: un ser humano maldito que resucita tras cada muerte. El mundo ha sido arrasado por esta maldición y tú debes liberarlo",
+    "developer" : "From Software",
+    "publisher" : "Bandai Namco",
+    "release_year" : "2008",
+    "genre_id" : "6"
+  }
+}
+
+body:multipart-form {
+  title: Dark Souls
+  synopsis: Despiertas en Lordran como un no-muerto: un ser humano maldito que resucita tras cada muerte. El mundo ha sido arrasado por esta maldición y tú debes liberarlo
+  developer: From Software
+  publisher: Bandai Namco
+  release_year: 2008
+  genre_id: 6
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

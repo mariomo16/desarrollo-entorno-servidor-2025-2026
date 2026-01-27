@@ -1,0 +1,23 @@
+meta {
+  name: Create Review
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{BASE_URL}}/reviews
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  comment: Juegazo socio
+  score: 10
+  game_id: 22
+  user_id: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

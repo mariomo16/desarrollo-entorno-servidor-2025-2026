@@ -1,0 +1,29 @@
+meta {
+  name: Update Game
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{BASE_URL}}/games/{{id}}
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  genre_id: 6
+  ~release_year: 2008
+  ~title: Dark Souls
+  ~synopsis: Despiertas en Lordran como un no-muerto: un ser humano maldito que resucita tras cada muerte. El mundo ha sido arrasado por esta maldición y tú debes liberarlo
+  ~developer: From Software
+  ~publisher: Bandai Namco
+}
+
+vars:pre-request {
+  id: 22
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
