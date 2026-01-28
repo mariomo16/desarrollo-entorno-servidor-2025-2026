@@ -11,6 +11,25 @@ public function index()
         ])->withCount(['quavs', 'requacks'])->latest()->get()
     ]);
 }
+
+// --------------------------------- CONTROLLER
+Quack::with(['user', 'requacks'])
+    ->withCount(['quavs', 'requacks'])
+    ->where('user_id', $userId)
+    ->orWhereHas('requacks', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+    })
+    ->orWhereHas('user.followers', function ($query) use ($userId) {
+        $query->where('follower_id', $userId);
+    })
+    ->orWhereHas('requacks', function ($q) use ($userId) {
+        // Solo usuarios que sigo
+        $q->whereHas('followers', function ($q2) use ($userId) {
+            $q2->where('follower_id', $userId);
+        });
+    })
+    ->latest()
+    ->get()
 // --------------------------------- LIVEWIRE
 use Livewire\Component;
 
